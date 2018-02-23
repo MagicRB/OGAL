@@ -1,0 +1,3 @@
+/home/main/C++/OGLAL/build/CMakeFiles/rebuild_cache.dir
+/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir
+/home/main/C++/OGLAL/build/CMakeFiles/edit_cache.dir
