@@ -17,6 +17,7 @@ namespace OGAL {
             void set_data(std::vector<GLfloat> data);
 
             GLuint vbo_id;
+            GLuint size;
 
         protected:
 

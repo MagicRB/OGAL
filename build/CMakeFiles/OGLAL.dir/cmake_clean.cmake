@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/OGLAL.dir/src/vao.cpp.o"
   "CMakeFiles/OGLAL.dir/src/vbo.cpp.o"
   "CMakeFiles/OGLAL.dir/src/shapes/equilateral_triangle.cpp.o"
+  "CMakeFiles/OGLAL.dir/src/shapes/square.cpp.o"
   "../run/OGLAL.pdb"
   "../run/OGLAL"
 )

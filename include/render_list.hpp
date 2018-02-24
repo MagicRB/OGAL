@@ -17,6 +17,7 @@ namespace OGAL {
 
     struct buffer_texture_pair {
         GLuint buffer_id;
+        GLuint buffer_size;
         GLuint texture_id;
     };
 

@@ -104,6 +104,9 @@
 		<Unit filename="/home/main/C++/OGLAL/include/shapes/equilateral_triangle.hpp">
 			<Option target="OGLAL"/>
 		</Unit>
+		<Unit filename="/home/main/C++/OGLAL/include/shapes/square.hpp">
+			<Option target="OGLAL"/>
+		</Unit>
 		<Unit filename="/home/main/C++/OGLAL/include/vao.hpp">
 			<Option target="OGLAL"/>
 		</Unit>
@@ -129,6 +132,9 @@
 			<Option target="OGLAL"/>
 		</Unit>
 		<Unit filename="/home/main/C++/OGLAL/src/shapes/equilateral_triangle.cpp">
+			<Option target="OGLAL"/>
+		</Unit>
+		<Unit filename="/home/main/C++/OGLAL/src/shapes/square.cpp">
 			<Option target="OGLAL"/>
 		</Unit>
 		<Unit filename="/home/main/C++/OGLAL/src/vao.cpp">

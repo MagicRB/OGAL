@@ -1,5 +1,5 @@
-#ifndef EQUILATERAL_TRIANGLE_HPP
-#define EQUILATERAL_TRIANGLE_HPP
+#ifndef SQUARE_HPP
+#define SQUARE_HPP
 
 #include "renderable.hpp"
 #include "vbo.hpp"
@@ -7,11 +7,11 @@
 #include <glm/glm.hpp>
 
 namespace OGAL {
-    class equilateral_triangle: public renderable {
+    class square: public renderable {
         public:
 
-            equilateral_triangle();
-            ~equilateral_triangle();
+            square();
+            ~square();
 
             glm::vec<2, float, (glm::qualifier)0> position;
 
@@ -32,4 +32,4 @@ namespace OGAL {
     };
 }
 
-#endif //EQUILATERAL_TRIANGLE_HPP
+#endif //SQUARE_HPP

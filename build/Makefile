@@ -312,6 +312,33 @@ src/shapes/equilateral_triangle.cpp.s:
 	$(MAKE) -f CMakeFiles/OGLAL.dir/build.make CMakeFiles/OGLAL.dir/src/shapes/equilateral_triangle.cpp.s
 .PHONY : src/shapes/equilateral_triangle.cpp.s
 
+src/shapes/square.o: src/shapes/square.cpp.o
+
+.PHONY : src/shapes/square.o
+
+# target to build an object file
+src/shapes/square.cpp.o:
+	$(MAKE) -f CMakeFiles/OGLAL.dir/build.make CMakeFiles/OGLAL.dir/src/shapes/square.cpp.o
+.PHONY : src/shapes/square.cpp.o
+
+src/shapes/square.i: src/shapes/square.cpp.i
+
+.PHONY : src/shapes/square.i
+
+# target to preprocess a source file
+src/shapes/square.cpp.i:
+	$(MAKE) -f CMakeFiles/OGLAL.dir/build.make CMakeFiles/OGLAL.dir/src/shapes/square.cpp.i
+.PHONY : src/shapes/square.cpp.i
+
+src/shapes/square.s: src/shapes/square.cpp.s
+
+.PHONY : src/shapes/square.s
+
+# target to generate assembly for a file
+src/shapes/square.cpp.s:
+	$(MAKE) -f CMakeFiles/OGLAL.dir/build.make CMakeFiles/OGLAL.dir/src/shapes/square.cpp.s
+.PHONY : src/shapes/square.cpp.s
+
 src/vao.o: src/vao.cpp.o
 
 .PHONY : src/vao.o
@@ -396,6 +423,9 @@ help:
 	@echo "... src/shapes/equilateral_triangle.o"
 	@echo "... src/shapes/equilateral_triangle.i"
 	@echo "... src/shapes/equilateral_triangle.s"
+	@echo "... src/shapes/square.o"
+	@echo "... src/shapes/square.i"
+	@echo "... src/shapes/square.s"
 	@echo "... src/vao.o"
 	@echo "... src/vao.i"
 	@echo "... src/vao.s"

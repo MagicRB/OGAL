@@ -14,7 +14,7 @@
 #include "vao.hpp"
 #include "vbo.hpp"
 #include "render_list.hpp"
-#include "shapes/equilateral_triangle.hpp"
+#include "shapes/square.hpp"
 
 #include <vector>
 #include <iostream>
@@ -117,17 +117,17 @@ int main(void)
 
     vao.bind();
 
-    OGAL::equilateral_triangle eq;
+    OGAL::square square;
 
-    eq.set_height(20);
-
+    square.position.y = 0;
+    square.set_dimensions(0, 100);
     OGAL::render_list render_list;
 
-    render_list.add_renderable(&eq);
+    render_list.add_renderable(&square);
 
     printf("%s\n", glGetString(GL_VERSION));
 
-    glm::mat4 projection = glm::ortho(0.0f, (float)WINDOW_WIDTH, 0.0f, (float)WINDOW_HEIGHT);
+    glm::mat4 projection = glm::ortho(-(float)(WINDOW_WIDTH/2), (float)(WINDOW_WIDTH/2), -(float)(WINDOW_HEIGHT/2), (float)(WINDOW_HEIGHT/2));
 
     while (!glfwWindowShouldClose(window)) {
         OGAL::event event = OGAL::poll_events();

@@ -49,6 +49,16 @@ renderable.hpp
 ../include/shapes/renderable.hpp
 vbo.hpp
 ../include/shapes/vbo.hpp
+glm/glm.hpp
+-
+
+../include/shapes/square.hpp
+renderable.hpp
+../include/shapes/renderable.hpp
+vbo.hpp
+../include/shapes/vbo.hpp
+glm/glm.hpp
+-
 
 ../include/vao.hpp
 GL/glew.h
@@ -91,8 +101,8 @@ vbo.hpp
 /home/main/C++/OGLAL/src/vbo.hpp
 render_list.hpp
 /home/main/C++/OGLAL/src/render_list.hpp
-shapes/equilateral_triangle.hpp
-/home/main/C++/OGLAL/src/shapes/equilateral_triangle.hpp
+shapes/square.hpp
+/home/main/C++/OGLAL/src/shapes/square.hpp
 vector
 -
 iostream
@@ -139,6 +149,10 @@ math.h
 -
 stdio.h
 -
+
+/home/main/C++/OGLAL/src/shapes/square.cpp
+shapes/square.hpp
+/home/main/C++/OGLAL/src/shapes/shapes/square.hpp
 
 /home/main/C++/OGLAL/src/vao.cpp
 vao.hpp

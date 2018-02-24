@@ -13,6 +13,7 @@ namespace OGAL {
             renderable();
             ~renderable();
 
+            virtual std::vector<GLuint> return_vertex_buffer_sizes() = 0;
             virtual std::vector<GLuint> return_vertex_buffer_ids() = 0;
 
         protected:
