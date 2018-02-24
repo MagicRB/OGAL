@@ -9,6 +9,7 @@ CMakeFiles/OGLAL.dir/src/main.cpp.o
  ../include/render_list.hpp
  ../include/renderable.hpp
  ../include/shader.hpp
+ ../include/shapes/equilateral_triangle.hpp
  ../include/shapes/square.hpp
  ../include/vao.hpp
  ../include/vbo.hpp

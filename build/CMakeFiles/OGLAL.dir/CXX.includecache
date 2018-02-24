@@ -103,6 +103,8 @@ render_list.hpp
 /home/main/C++/OGLAL/src/render_list.hpp
 shapes/square.hpp
 /home/main/C++/OGLAL/src/shapes/square.hpp
+shapes/equilateral_triangle.hpp
+/home/main/C++/OGLAL/src/shapes/equilateral_triangle.hpp
 vector
 -
 iostream

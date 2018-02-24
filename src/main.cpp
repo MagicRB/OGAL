@@ -15,6 +15,7 @@
 #include "vbo.hpp"
 #include "render_list.hpp"
 #include "shapes/square.hpp"
+#include "shapes/equilateral_triangle.hpp"
 
 #include <vector>
 #include <iostream>
@@ -118,12 +119,16 @@ int main(void)
     vao.bind();
 
     OGAL::square square;
-
     square.position.y = 0;
     square.set_dimensions(0, 100);
-    OGAL::render_list render_list;
 
+    OGAL::equilateral_triangle eq;
+    eq.position.y = 100;
+    eq.set_dimensions(0, 100);
+
+    OGAL::render_list render_list;
     render_list.add_renderable(&square);
+    render_list.add_renderable(&eq);
 
     printf("%s\n", glGetString(GL_VERSION));
 

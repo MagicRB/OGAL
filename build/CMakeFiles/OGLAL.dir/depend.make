@@ -8,6 +8,7 @@ CMakeFiles/OGLAL.dir/src/main.cpp.o: ../include/program.hpp
 CMakeFiles/OGLAL.dir/src/main.cpp.o: ../include/render_list.hpp
 CMakeFiles/OGLAL.dir/src/main.cpp.o: ../include/renderable.hpp
 CMakeFiles/OGLAL.dir/src/main.cpp.o: ../include/shader.hpp
+CMakeFiles/OGLAL.dir/src/main.cpp.o: ../include/shapes/equilateral_triangle.hpp
 CMakeFiles/OGLAL.dir/src/main.cpp.o: ../include/shapes/square.hpp
 CMakeFiles/OGLAL.dir/src/main.cpp.o: ../include/vao.hpp
 CMakeFiles/OGLAL.dir/src/main.cpp.o: ../include/vbo.hpp
