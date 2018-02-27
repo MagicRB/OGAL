@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.9)
-project(OGLAL)
+project(OGAL)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -12,7 +12,7 @@ if(WIN32)
 	link_directories(link_win32)
 endif(WIN32)
 
-file(GLOB SOURCES "src/*.cpp" "include/*.hpp" "src/shapes/*.cpp" "include/shapes/*.hpp")
+file(GLOB SOURCES "src/*.cpp" "include/*.h" "include/*.hpp" "src/shapes/*.cpp" "include/shapes/*.hpp")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../run)
 

@@ -137,7 +137,7 @@ CMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=OGLAL
+CMAKE_PROJECT_NAME:STATIC=OGAL
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -187,6 +187,12 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 // during the make.  This is useful for debugging only. With Visual
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
+
+//Value Computed by CMake
+OGAL_BINARY_DIR:STATIC=/home/main/C++/OGLAL/build
+
+//Value Computed by CMake
+OGAL_SOURCE_DIR:STATIC=/home/main/C++/OGLAL
 
 //Value Computed by CMake
 OGLAL_BINARY_DIR:STATIC=/home/main/C++/OGLAL/build

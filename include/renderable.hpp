@@ -8,13 +8,19 @@
 #include "vbo.hpp"
 
 namespace OGAL {
+
+    struct buffer_texture_pair2 {
+        GLuint buffer_id;
+        GLuint buffer_size;
+        GLuint texture_id;
+    };
+
     class renderable {
         public:
             renderable();
             ~renderable();
 
-            virtual std::vector<GLuint> return_vertex_buffer_sizes() = 0;
-            virtual std::vector<GLuint> return_vertex_buffer_ids() = 0;
+            virtual std::vector<OGAL::buffer_texture_pair2> return_buffer_texture_pairs() = 0;
 
         protected:
 

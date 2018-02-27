@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/OGLAL.dir/src/render_list.cpp.o"
   "CMakeFiles/OGLAL.dir/src/renderable.cpp.o"
   "CMakeFiles/OGLAL.dir/src/shader.cpp.o"
+  "CMakeFiles/OGLAL.dir/src/texture.cpp.o"
   "CMakeFiles/OGLAL.dir/src/vao.cpp.o"
   "CMakeFiles/OGLAL.dir/src/vbo.cpp.o"
   "CMakeFiles/OGLAL.dir/src/shapes/equilateral_triangle.cpp.o"

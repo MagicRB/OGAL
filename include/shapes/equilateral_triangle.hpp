@@ -14,6 +14,8 @@ namespace OGAL {
             ~equilateral_triangle();
 
             glm::vec<2, float, (glm::qualifier)0> position;
+            glm::vec<4, float, (glm::qualifier)0> color;
+            glm::vec<2, float, (glm::qualifier)0> uv;
 
             std::vector<GLuint> return_vertex_buffer_ids();
             std::vector<GLuint> return_vertex_buffer_sizes();
@@ -24,6 +26,8 @@ namespace OGAL {
 
             short unsigned int type;
             short unsigned int a;
+
+            void recalculate();
 
             OGAL::vbo vertex_buffer;
 

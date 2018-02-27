@@ -201,9 +201,33 @@ CMakeFiles/OGLAL.dir/src/shader.cpp.o.provides: CMakeFiles/OGLAL.dir/src/shader.
 CMakeFiles/OGLAL.dir/src/shader.cpp.o.provides.build: CMakeFiles/OGLAL.dir/src/shader.cpp.o
 
 
+CMakeFiles/OGLAL.dir/src/texture.cpp.o: CMakeFiles/OGLAL.dir/flags.make
+CMakeFiles/OGLAL.dir/src/texture.cpp.o: ../src/texture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/main/C++/OGLAL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/OGLAL.dir/src/texture.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OGLAL.dir/src/texture.cpp.o -c /home/main/C++/OGLAL/src/texture.cpp
+
+CMakeFiles/OGLAL.dir/src/texture.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/OGLAL.dir/src/texture.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/main/C++/OGLAL/src/texture.cpp > CMakeFiles/OGLAL.dir/src/texture.cpp.i
+
+CMakeFiles/OGLAL.dir/src/texture.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/OGLAL.dir/src/texture.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/main/C++/OGLAL/src/texture.cpp -o CMakeFiles/OGLAL.dir/src/texture.cpp.s
+
+CMakeFiles/OGLAL.dir/src/texture.cpp.o.requires:
+
+.PHONY : CMakeFiles/OGLAL.dir/src/texture.cpp.o.requires
+
+CMakeFiles/OGLAL.dir/src/texture.cpp.o.provides: CMakeFiles/OGLAL.dir/src/texture.cpp.o.requires
+	$(MAKE) -f CMakeFiles/OGLAL.dir/build.make CMakeFiles/OGLAL.dir/src/texture.cpp.o.provides.build
+.PHONY : CMakeFiles/OGLAL.dir/src/texture.cpp.o.provides
+
+CMakeFiles/OGLAL.dir/src/texture.cpp.o.provides.build: CMakeFiles/OGLAL.dir/src/texture.cpp.o
+
+
 CMakeFiles/OGLAL.dir/src/vao.cpp.o: CMakeFiles/OGLAL.dir/flags.make
 CMakeFiles/OGLAL.dir/src/vao.cpp.o: ../src/vao.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/main/C++/OGLAL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/OGLAL.dir/src/vao.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/main/C++/OGLAL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/OGLAL.dir/src/vao.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OGLAL.dir/src/vao.cpp.o -c /home/main/C++/OGLAL/src/vao.cpp
 
 CMakeFiles/OGLAL.dir/src/vao.cpp.i: cmake_force
@@ -227,7 +251,7 @@ CMakeFiles/OGLAL.dir/src/vao.cpp.o.provides.build: CMakeFiles/OGLAL.dir/src/vao.
 
 CMakeFiles/OGLAL.dir/src/vbo.cpp.o: CMakeFiles/OGLAL.dir/flags.make
 CMakeFiles/OGLAL.dir/src/vbo.cpp.o: ../src/vbo.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/main/C++/OGLAL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/OGLAL.dir/src/vbo.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/main/C++/OGLAL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/OGLAL.dir/src/vbo.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OGLAL.dir/src/vbo.cpp.o -c /home/main/C++/OGLAL/src/vbo.cpp
 
 CMakeFiles/OGLAL.dir/src/vbo.cpp.i: cmake_force
@@ -251,7 +275,7 @@ CMakeFiles/OGLAL.dir/src/vbo.cpp.o.provides.build: CMakeFiles/OGLAL.dir/src/vbo.
 
 CMakeFiles/OGLAL.dir/src/shapes/equilateral_triangle.cpp.o: CMakeFiles/OGLAL.dir/flags.make
 CMakeFiles/OGLAL.dir/src/shapes/equilateral_triangle.cpp.o: ../src/shapes/equilateral_triangle.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/main/C++/OGLAL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/OGLAL.dir/src/shapes/equilateral_triangle.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/main/C++/OGLAL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/OGLAL.dir/src/shapes/equilateral_triangle.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OGLAL.dir/src/shapes/equilateral_triangle.cpp.o -c /home/main/C++/OGLAL/src/shapes/equilateral_triangle.cpp
 
 CMakeFiles/OGLAL.dir/src/shapes/equilateral_triangle.cpp.i: cmake_force
@@ -275,7 +299,7 @@ CMakeFiles/OGLAL.dir/src/shapes/equilateral_triangle.cpp.o.provides.build: CMake
 
 CMakeFiles/OGLAL.dir/src/shapes/square.cpp.o: CMakeFiles/OGLAL.dir/flags.make
 CMakeFiles/OGLAL.dir/src/shapes/square.cpp.o: ../src/shapes/square.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/main/C++/OGLAL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/OGLAL.dir/src/shapes/square.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/main/C++/OGLAL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/OGLAL.dir/src/shapes/square.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/OGLAL.dir/src/shapes/square.cpp.o -c /home/main/C++/OGLAL/src/shapes/square.cpp
 
 CMakeFiles/OGLAL.dir/src/shapes/square.cpp.i: cmake_force
@@ -305,6 +329,7 @@ OGLAL_OBJECTS = \
 "CMakeFiles/OGLAL.dir/src/render_list.cpp.o" \
 "CMakeFiles/OGLAL.dir/src/renderable.cpp.o" \
 "CMakeFiles/OGLAL.dir/src/shader.cpp.o" \
+"CMakeFiles/OGLAL.dir/src/texture.cpp.o" \
 "CMakeFiles/OGLAL.dir/src/vao.cpp.o" \
 "CMakeFiles/OGLAL.dir/src/vbo.cpp.o" \
 "CMakeFiles/OGLAL.dir/src/shapes/equilateral_triangle.cpp.o" \
@@ -319,13 +344,14 @@ OGLAL_EXTERNAL_OBJECTS =
 ../run/OGLAL: CMakeFiles/OGLAL.dir/src/render_list.cpp.o
 ../run/OGLAL: CMakeFiles/OGLAL.dir/src/renderable.cpp.o
 ../run/OGLAL: CMakeFiles/OGLAL.dir/src/shader.cpp.o
+../run/OGLAL: CMakeFiles/OGLAL.dir/src/texture.cpp.o
 ../run/OGLAL: CMakeFiles/OGLAL.dir/src/vao.cpp.o
 ../run/OGLAL: CMakeFiles/OGLAL.dir/src/vbo.cpp.o
 ../run/OGLAL: CMakeFiles/OGLAL.dir/src/shapes/equilateral_triangle.cpp.o
 ../run/OGLAL: CMakeFiles/OGLAL.dir/src/shapes/square.cpp.o
 ../run/OGLAL: CMakeFiles/OGLAL.dir/build.make
 ../run/OGLAL: CMakeFiles/OGLAL.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/main/C++/OGLAL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable ../run/OGLAL"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/main/C++/OGLAL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable ../run/OGLAL"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/OGLAL.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -339,6 +365,7 @@ CMakeFiles/OGLAL.dir/requires: CMakeFiles/OGLAL.dir/src/program.cpp.o.requires
 CMakeFiles/OGLAL.dir/requires: CMakeFiles/OGLAL.dir/src/render_list.cpp.o.requires
 CMakeFiles/OGLAL.dir/requires: CMakeFiles/OGLAL.dir/src/renderable.cpp.o.requires
 CMakeFiles/OGLAL.dir/requires: CMakeFiles/OGLAL.dir/src/shader.cpp.o.requires
+CMakeFiles/OGLAL.dir/requires: CMakeFiles/OGLAL.dir/src/texture.cpp.o.requires
 CMakeFiles/OGLAL.dir/requires: CMakeFiles/OGLAL.dir/src/vao.cpp.o.requires
 CMakeFiles/OGLAL.dir/requires: CMakeFiles/OGLAL.dir/src/vbo.cpp.o.requires
 CMakeFiles/OGLAL.dir/requires: CMakeFiles/OGLAL.dir/src/shapes/equilateral_triangle.cpp.o.requires

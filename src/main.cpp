@@ -17,12 +17,14 @@
 #include "shapes/square.hpp"
 #include "shapes/equilateral_triangle.hpp"
 
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+
 #include <vector>
-#include <iostream>
 #include <stdio.h>
 
-#define WINDOW_WIDTH 200
-#define WINDOW_HEIGHT 200
+#define WINDOW_WIDTH 400
+#define WINDOW_HEIGHT 400
 
 std::vector<OGAL::event> events;
 
@@ -70,7 +72,7 @@ int main(void)
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow* window = glfwCreateWindow(200, 200, "OGLAL", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "OGAL", NULL, NULL);
 
     if (!window) {
         fprintf(stderr, "An error was encountered when trying to open a window.");
@@ -93,18 +95,37 @@ int main(void)
 
     vertex_shader.load_shader(" #version 330 core\n\
                                 layout(location = 0) in vec3 vertex_pos;\n\
+                                layout(location = 1) in vec4 color;\n\
+                                layout(location = 2) in vec2 uv;\n\
+                                \n\
+                                out vec4 colorV;\n\
+                                out vec2 UV;\n\
                                 \n\
                                 uniform mat4 projection;\n\
+                                \n\
                                 void main() {\n\
+                                    UV = uv;\n\
+                                    colorV = color;\n\
                                     gl_Position = projection * vec4(vertex_pos, 1);\n\
                                 }\
                                 ", GL_VERTEX_SHADER);
 
     fragment_shader.load_shader("#version 330 core\n\
                                 \n\
-                                out vec3 color;\n\
+                                uniform sampler2D uvtexture;\n\
+                                uniform bool use_texture;\n\
+                                \n\
+                                in vec4 colorV;\n\
+                                in vec2 UV;\n\
+                                \n\
+                                out vec4 colorF;\n\
+                                \n\
                                 void main(){\n\
-                                    color = vec3(0,1,0);\n\
+                                    if (use_texture == true) {\n\
+                                        colorF = texture(uvtexture, UV);\n\
+                                    } else {\n\
+                                        colorF = colorV;\n\
+                                    }\n\
                                 }\
                                 ", GL_FRAGMENT_SHADER);
 
@@ -119,20 +140,34 @@ int main(void)
     vao.bind();
 
     OGAL::square square;
-    square.position.y = 0;
-    square.set_dimensions(0, 100);
+    OGAL::square square2;
 
-    OGAL::equilateral_triangle eq;
-    eq.position.y = 100;
-    eq.set_dimensions(0, 100);
+    int width, height, bpp;
+    unsigned char* rgb = stbi_load( "image.png", &width, &height, &bpp, 4 );
+
+    square.texture.set_data(rgb, width, height);
+    square.set_dimensions(0, 20);
+
+    stbi_image_free( rgb );
+
+    rgb = stbi_load( "image2.png", &width, &height, &bpp, 4 );
+    square2.texture.set_data(rgb, width, height);
+    square2.position.y = 20;
+    square2.set_dimensions(0, 20);
+
+//    OGAL::equilateral_triangle eq;
+//    eq.position.y = 50;
+//    eq.set_dimensions(1, 100);
 
     OGAL::render_list render_list;
     render_list.add_renderable(&square);
-    render_list.add_renderable(&eq);
+    render_list.add_renderable(&square2);
+    //render_list.add_renderable(&eq);
 
     printf("%s\n", glGetString(GL_VERSION));
 
-    glm::mat4 projection = glm::ortho(-(float)(WINDOW_WIDTH/2), (float)(WINDOW_WIDTH/2), -(float)(WINDOW_HEIGHT/2), (float)(WINDOW_HEIGHT/2));
+    //glm::mat4 projection = glm::ortho(-(float)(WINDOW_WIDTH/2), (float)(WINDOW_WIDTH/2), -(float)(WINDOW_HEIGHT/2), (float)(WINDOW_HEIGHT/2));
+    glm::mat4 projection = glm::ortho(-50.0f, 50.0f, -50.0f, 50.0f);
 
     while (!glfwWindowShouldClose(window)) {
         OGAL::event event = OGAL::poll_events();

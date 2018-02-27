@@ -107,6 +107,9 @@
 		<Unit filename="/home/main/C++/OGLAL/include/shapes/square.hpp">
 			<Option target="OGLAL"/>
 		</Unit>
+		<Unit filename="/home/main/C++/OGLAL/include/texture.hpp">
+			<Option target="OGLAL"/>
+		</Unit>
 		<Unit filename="/home/main/C++/OGLAL/include/vao.hpp">
 			<Option target="OGLAL"/>
 		</Unit>
@@ -135,6 +138,9 @@
 			<Option target="OGLAL"/>
 		</Unit>
 		<Unit filename="/home/main/C++/OGLAL/src/shapes/square.cpp">
+			<Option target="OGLAL"/>
+		</Unit>
+		<Unit filename="/home/main/C++/OGLAL/src/texture.cpp">
 			<Option target="OGLAL"/>
 		</Unit>
 		<Unit filename="/home/main/C++/OGLAL/src/vao.cpp">

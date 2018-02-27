@@ -339,6 +339,33 @@ src/shapes/square.cpp.s:
 	$(MAKE) -f CMakeFiles/OGLAL.dir/build.make CMakeFiles/OGLAL.dir/src/shapes/square.cpp.s
 .PHONY : src/shapes/square.cpp.s
 
+src/texture.o: src/texture.cpp.o
+
+.PHONY : src/texture.o
+
+# target to build an object file
+src/texture.cpp.o:
+	$(MAKE) -f CMakeFiles/OGLAL.dir/build.make CMakeFiles/OGLAL.dir/src/texture.cpp.o
+.PHONY : src/texture.cpp.o
+
+src/texture.i: src/texture.cpp.i
+
+.PHONY : src/texture.i
+
+# target to preprocess a source file
+src/texture.cpp.i:
+	$(MAKE) -f CMakeFiles/OGLAL.dir/build.make CMakeFiles/OGLAL.dir/src/texture.cpp.i
+.PHONY : src/texture.cpp.i
+
+src/texture.s: src/texture.cpp.s
+
+.PHONY : src/texture.s
+
+# target to generate assembly for a file
+src/texture.cpp.s:
+	$(MAKE) -f CMakeFiles/OGLAL.dir/build.make CMakeFiles/OGLAL.dir/src/texture.cpp.s
+.PHONY : src/texture.cpp.s
+
 src/vao.o: src/vao.cpp.o
 
 .PHONY : src/vao.o
@@ -426,6 +453,9 @@ help:
 	@echo "... src/shapes/square.o"
 	@echo "... src/shapes/square.i"
 	@echo "... src/shapes/square.s"
+	@echo "... src/texture.o"
+	@echo "... src/texture.i"
+	@echo "... src/texture.s"
 	@echo "... src/vao.o"
 	@echo "... src/vao.i"
 	@echo "... src/vao.s"

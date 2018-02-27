@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/main/C++/OGLAL/src/shader.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/shader.cpp.o"
   "/home/main/C++/OGLAL/src/shapes/equilateral_triangle.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/shapes/equilateral_triangle.cpp.o"
   "/home/main/C++/OGLAL/src/shapes/square.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/shapes/square.cpp.o"
+  "/home/main/C++/OGLAL/src/texture.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/texture.cpp.o"
   "/home/main/C++/OGLAL/src/vao.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/vao.cpp.o"
   "/home/main/C++/OGLAL/src/vbo.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/vbo.cpp.o"
   )

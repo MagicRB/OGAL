@@ -11,6 +11,8 @@ CMakeFiles/OGLAL.dir/src/main.cpp.o
  ../include/shader.hpp
  ../include/shapes/equilateral_triangle.hpp
  ../include/shapes/square.hpp
+ ../include/stb_image.h
+ ../include/texture.hpp
  ../include/vao.hpp
  ../include/vbo.hpp
  /home/main/C++/OGLAL/src/main.cpp
@@ -37,8 +39,12 @@ CMakeFiles/OGLAL.dir/src/shapes/equilateral_triangle.cpp.o
 CMakeFiles/OGLAL.dir/src/shapes/square.cpp.o
  ../include/renderable.hpp
  ../include/shapes/square.hpp
+ ../include/texture.hpp
  ../include/vbo.hpp
  /home/main/C++/OGLAL/src/shapes/square.cpp
+CMakeFiles/OGLAL.dir/src/texture.cpp.o
+ ../include/texture.hpp
+ /home/main/C++/OGLAL/src/texture.cpp
 CMakeFiles/OGLAL.dir/src/vao.cpp.o
  ../include/vao.hpp
  /home/main/C++/OGLAL/src/vao.cpp

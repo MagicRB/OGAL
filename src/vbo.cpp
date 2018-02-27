@@ -4,7 +4,7 @@
 
 OGAL::vbo::vbo()
 {
-    glGenBuffers(1, &vbo_id);s
+    glGenBuffers(1, &vbo_id);
 }
 
 
