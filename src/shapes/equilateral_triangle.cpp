@@ -3,52 +3,52 @@
 #include <math.h>
 #include <stdio.h>
 
-OGAL::equilateral_triangle::equilateral_triangle()
+OGAL::EquilateralTriangle::EquilateralTriangle()
 {
-    position.x = 0;
-    position.y = 0;
+    position_.x = 0;
+    position_.y = 0;
 }
 
-OGAL::equilateral_triangle::~equilateral_triangle()
+OGAL::EquilateralTriangle::~EquilateralTriangle()
 {}
 
-std::vector<GLuint> OGAL::equilateral_triangle::return_vertex_buffer_ids()
+std::vector<GLuint> OGAL::EquilateralTriangle::return_vertex_buffer_ids()
 {
-    return std::vector<GLuint> (1, vertex_buffer.vbo_id);
+    return std::vector<GLuint> (1, vertex_buffer_.vbo_id_);
 }
 
-std::vector<GLuint> OGAL::equilateral_triangle::return_vertex_buffer_sizes()
+std::vector<GLuint> OGAL::EquilateralTriangle::return_vertex_buffer_sizes()
 {
-    return std::vector<GLuint> (1, vertex_buffer.size / 3);
+    return std::vector<GLuint> (1, vertex_buffer_.size_ / 3);
 }
 
-void OGAL::equilateral_triangle::set_dimensions(short unsigned int pType, GLfloat pA)
+void OGAL::EquilateralTriangle::set_dimensions(short unsigned int type, GLfloat a)
 {
-    a = pA;
-    type = pType;
+    a_ = a;
+    type_ = type;
 
     recalculate();
 }
 
-void OGAL::equilateral_triangle::recalculate()
+void OGAL::EquilateralTriangle::recalculate()
 {
     std::vector<GLfloat> v;
 
 
-    if (type == 0) {
-        v = {   position.x                                 , position.y  + a/2.0f, 0.0f, color.r, color.g, color.b, color.a, uv.x, uv.y,
-                position.x - (2.0f * a / sqrt(3.0f) / 2.0f), position.y  - a/2.0f, 0.0f, color.r, color.g, color.b, color.a, uv.x, uv.y,
-                position.x + (2.0f * a / sqrt(3.0f) / 2.0f), position.y  - a/2.0f, 0.0f, color.r, color.g, color.b, color.a, uv.x, uv.y
+    if (type_ == 0) {
+        v = {   position_.x                                  , position_.y  + a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, uv_.x, uv_.y,
+                position_.x - (2.0f * a_ / sqrt(3.0f) / 2.0f), position_.y  - a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, uv_.x, uv_.y,
+                position_.x + (2.0f * a_ / sqrt(3.0f) / 2.0f), position_.y  - a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, uv_.x, uv_.y
         };
-    } else if (type == 1) {
-        v = {   position.x           , position.y + (a / 2.0f * sqrt(3.0f)) / 2.0f, 0.0f, color.r, color.g, color.b, color.a, uv.x, uv.y,
-                position.x - a / 2.0f, position.y - (a / 2.0f * sqrt(3.0f)) / 2.0f, 0.0f, color.r, color.g, color.b, color.a, uv.x, uv.y,
-                position.x + a / 2.0f, position.y - (a / 2.0f * sqrt(3.0f)) / 2.0f, 0.0f, color.r, color.g, color.b, color.a, uv.x, uv.y
+    } else if (type_ == 1) {
+        v = {   position_.x            , position_.y + (a_ / 2.0f * sqrt(3.0f)) / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, uv_.x, uv_.y,
+                position_.x - a_ / 2.0f, position_.y - (a_ / 2.0f * sqrt(3.0f)) / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, uv_.x, uv_.y,
+                position_.x + a_ / 2.0f, position_.y - (a_ / 2.0f * sqrt(3.0f)) / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, uv_.x, uv_.y
         };
     }
 
-    vertex_buffer.bind();
+    vertex_buffer_.bind();
 
-    vertex_buffer.size = v.size();
-    vertex_buffer.set_data(v);
+    vertex_buffer_.size_ = v.size();
+    vertex_buffer_.set_data(v);
 }

@@ -6,7 +6,27 @@
 
 #IncludeRegexTransform: 
 
+../include/OGAL.hpp
+program.hpp
+../include/program.hpp
+render_list.hpp
+../include/render_list.hpp
+renderable.hpp
+../include/renderable.hpp
+shader.hpp
+../include/shader.hpp
+texture.hpp
+../include/texture.hpp
+vao.hpp
+../include/vao.hpp
+vbo.hpp
+../include/vbo.hpp
+event.hpp
 ../include/event.hpp
+
+../include/event.hpp
+GLFW/glfw3.h
+-
 
 ../include/program.hpp
 GL/glew.h
@@ -112,14 +132,18 @@ GL/glew.h
 GL/gl.h
 -
 
+/home/main/C++/OGLAL/src/OGAL.cpp
+OGAL.hpp
+/home/main/C++/OGLAL/src/OGAL.hpp
+
 /home/main/C++/OGLAL/src/event.cpp
 
 /home/main/C++/OGLAL/src/main.cpp
 GL/glew.h
 -
-GLFW/glfw3.h
--
 GL/gl.h
+-
+GLFW/glfw3.h
 -
 glm/glm.hpp
 -
@@ -127,27 +151,17 @@ glm/gtc/matrix_transform.hpp
 -
 glm/gtx/transform.hpp
 -
-event.hpp
-/home/main/C++/OGLAL/src/event.hpp
-shader.hpp
-/home/main/C++/OGLAL/src/shader.hpp
-program.hpp
-/home/main/C++/OGLAL/src/program.hpp
-vao.hpp
-/home/main/C++/OGLAL/src/vao.hpp
-vbo.hpp
-/home/main/C++/OGLAL/src/vbo.hpp
-render_list.hpp
-/home/main/C++/OGLAL/src/render_list.hpp
-shapes/square.hpp
-/home/main/C++/OGLAL/src/shapes/square.hpp
+OGAL.hpp
+/home/main/C++/OGLAL/src/OGAL.hpp
 shapes/equilateral_triangle.hpp
 /home/main/C++/OGLAL/src/shapes/equilateral_triangle.hpp
+shapes/square.hpp
+/home/main/C++/OGLAL/src/shapes/square.hpp
 stb_image.h
 /home/main/C++/OGLAL/src/stb_image.h
-vector
--
 stdio.h
+-
+vector
 -
 
 /home/main/C++/OGLAL/src/program.cpp

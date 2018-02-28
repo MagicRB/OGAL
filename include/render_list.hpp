@@ -13,12 +13,13 @@ namespace OGAL {
 
     class render_list;
 
-    void draw_render_list(render_list vrender_list, GLuint program_id, glm::mat4 projection);
+    void draw_render_list(render_list vrender_list, GLuint program_id, glm::mat4 projection, glm::vec2 camera_pos);
 
     struct buffer_texture_pair {
         GLuint buffer_id;
         GLuint buffer_size;
         GLuint texture_id;
+        GLuint use_texture;
     };
 
     class render_list {
@@ -26,9 +27,9 @@ namespace OGAL {
             render_list();
             ~render_list();
 
-            unsigned int add_renderable(OGAL::renderable* renderable);
+            unsigned int add_renderable(OGAL::Renderable* renderable);
 
-            std::vector<buffer_texture_pair> render_vector;
+            std::vector<buffer_texture_pair> render_vector_;
 
         protected:
 

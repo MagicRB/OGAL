@@ -5,16 +5,16 @@
 #include <GL/gl.h>
 
 namespace OGAL {
-    class program {
+    class Program {
         public:
-            program();
-            ~program();
+            Program();
+            ~Program();
 
-            GLuint program_id;
+            GLuint program_id_;
             void load_program(GLuint vertex_shader, GLuint fragment_shader);
         protected:
-            GLint result;
-            int log_lenght;
+            GLint result_;
+            int log_lenght_;
         private:
 
     };

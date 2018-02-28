@@ -5,16 +5,16 @@
 #include <GL/gl.h>
 
 namespace OGAL {
-    class texture {
+    class Texture {
         public:
-            texture();
-            ~texture();
+            Texture();
+            ~Texture();
 
             void bind();
 
             void set_data(unsigned char* data, GLuint width, GLuint height);
 
-            GLuint texture_id;
+            GLuint texture_id_;
         protected:
 
         private:

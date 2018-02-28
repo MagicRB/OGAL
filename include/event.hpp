@@ -1,5 +1,8 @@
 #ifndef EVENT_HPP
 #define EVENT_HPP
+
+#include <GLFW/glfw3.h>
+
 namespace OGAL {
     struct skey_event {
         public:
@@ -12,7 +15,7 @@ namespace OGAL {
 
     struct event {
         public:
-            skey_event key_event;
+            skey_event key_event_;
     };
 }
 #endif //EVENT_HPP

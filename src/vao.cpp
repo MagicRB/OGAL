@@ -1,14 +1,14 @@
 #include "vao.hpp"
 
-OGAL::vao::vao()
+OGAL::VAO::VAO()
 {
-    glGenVertexArrays(1, &vao_id);
+    glGenVertexArrays(1, &vao_id_);
 }
 
-OGAL::vao::~vao()
+OGAL::VAO::~VAO()
 {}
 
-void OGAL::vao::bind()
+void OGAL::VAO::bind()
 {
-    glBindVertexArray(vao_id);
+    glBindVertexArray(vao_id_);
 }

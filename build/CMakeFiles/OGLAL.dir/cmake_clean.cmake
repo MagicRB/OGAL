@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/OGLAL.dir/src/OGAL.cpp.o"
   "CMakeFiles/OGLAL.dir/src/event.cpp.o"
   "CMakeFiles/OGLAL.dir/src/main.cpp.o"
   "CMakeFiles/OGLAL.dir/src/program.cpp.o"

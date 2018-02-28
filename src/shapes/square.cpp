@@ -1,44 +1,82 @@
 #include "shapes/square.hpp"
 
-OGAL::square::square()
+OGAL::Square::Square()
 {
-    position.x = 0;
-    position.y = 0;
+    position_.x = 0;
+    position_.y = 0;
 }
 
-OGAL::square::~square()
+OGAL::Square::~Square()
 {}
 
-std::vector<OGAL::buffer_texture_pair2> OGAL::square::return_buffer_texture_pairs()
+void OGAL::Square::set_position(glm::vec<2, float, (glm::qualifier)0> position)
 {
-     return std::vector<OGAL::buffer_texture_pair2>(1, {vertex_buffer.vbo_id, vertex_buffer.size / 9, texture.texture_id});
+    position_ = position;
+    recalculate();
 }
 
-void OGAL::square::set_dimensions(short unsigned int pType, GLfloat pA)
+void OGAL::Square::set_position(float x, float y)
 {
-    a = pA;
-    type = pType;
+    position_ = glm::vec<2, float, (glm::qualifier)0>(x, y);
+    recalculate();
+}
+
+glm::vec<2, float, (glm::qualifier)0> OGAL::Square::get_position()
+{
+    return position_;
+}
+
+void OGAL::Square::set_color(glm::vec<4, float, (glm::qualifier)0> color)
+{
+    color_ = color;
+    recalculate();
+}
+
+void OGAL::Square::set_color(GLuint r, GLuint g, GLuint b, GLuint a)
+{
+    color_ = glm::vec<4, float, (glm::qualifier)0>(r, g, b, a);
+    recalculate();
+}
+
+glm::vec<4, float, (glm::qualifier)0> OGAL::Square::get_color()
+{
+    return color_;
+}
+
+std::vector<OGAL::buffer_texture_pair2> OGAL::Square::return_buffer_texture_pairs()
+{
+     return std::vector<OGAL::buffer_texture_pair2>(1, {vertex_buffer_.vbo_id_, vertex_buffer_.size_ / 9, texture_.texture_id_, use_texture_});
+}
+
+void OGAL::Square::set_dimensions(short unsigned int type, GLfloat a)
+{
+    a_ = a;
+    type_ = type;
 
     recalculate();
 }
 
-void OGAL::square::recalculate()
+void OGAL::Square::enable_texture(bool use_texture)
+{
+    use_texture_ = use_texture;
+}
+
+void OGAL::Square::recalculate()
 {
     std::vector<GLfloat> v;
 
-    if (type == 0) {
-        v = {   position.x - a / 2.0f, position.y + a / 2.0f, 0.0f, color.r, color.g, color.b, color.a, 0.0f, 1.0f,
-                position.x + a / 2.0f, position.y + a / 2.0f, 0.0f, color.r, color.g, color.b, color.a, 1.0f, 1.0f,
-                position.x - a / 2.0f, position.y - a / 2.0f, 0.0f, color.r, color.g, color.b, color.a, 0.0f, 0.0f,
-                position.x + a / 2.0f, position.y + a / 2.0f, 0.0f, color.r, color.g, color.b, color.a, 1.0f, 1.0f,
-                position.x + a / 2.0f, position.y - a / 2.0f, 0.0f, color.r, color.g, color.b, color.a, 1.0f, 0.0f,
-                position.x - a / 2.0f, position.y - a / 2.0f, 0.0f, color.r, color.g, color.b, color.a, 0.0f, 0.0f
+    if (type_ == 0) {
+        v = {   position_.x - a_ / 2.0f, position_.y + a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, 0.0f, 1.0f,
+                position_.x + a_ / 2.0f, position_.y + a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, 1.0f, 1.0f,
+                position_.x - a_ / 2.0f, position_.y - a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, 0.0f, 0.0f,
+                position_.x + a_ / 2.0f, position_.y + a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, 1.0f, 1.0f,
+                position_.x + a_ / 2.0f, position_.y - a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, 1.0f, 0.0f,
+                position_.x - a_ / 2.0f, position_.y - a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, 0.0f, 0.0f
         };
     }
 
-    vertex_buffer.bind();
+    vertex_buffer_.bind();
 
-    vertex_buffer.size = v.size();
-    vertex_buffer.set_data(v);
-
+    vertex_buffer_.size_ = v.size();
+    vertex_buffer_.set_data(v);
 }

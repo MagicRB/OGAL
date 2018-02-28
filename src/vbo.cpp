@@ -2,23 +2,23 @@
 
 #include <stdio.h>
 
-OGAL::vbo::vbo()
+OGAL::VBO::VBO()
 {
-    glGenBuffers(1, &vbo_id);
+    glGenBuffers(1, &vbo_id_);
 }
 
 
-OGAL::vbo::~vbo()
+OGAL::VBO::~VBO()
 {
-    glDeleteBuffers(1, &vbo_id);
+    glDeleteBuffers(1, &vbo_id_);
 }
 
-void OGAL::vbo::set_data(std::vector<GLfloat> data)
+void OGAL::VBO::set_data(std::vector<GLfloat> data)
 {
     glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(GLfloat), &data[0], GL_STATIC_DRAW);
 }
 
-void OGAL::vbo::bind()
+void OGAL::VBO::bind()
 {
-    glBindBuffer(GL_ARRAY_BUFFER, vbo_id);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo_id_);
 }

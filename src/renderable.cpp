@@ -1,9 +1,9 @@
 #include "renderable.hpp"
 
-OGAL::renderable::renderable()
+OGAL::Renderable::Renderable()
 {
 
 }
 
-OGAL::renderable::~renderable()
+OGAL::Renderable::~Renderable()
 {}

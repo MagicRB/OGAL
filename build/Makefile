@@ -123,6 +123,33 @@ OGLAL/fast:
 	$(MAKE) -f CMakeFiles/OGLAL.dir/build.make CMakeFiles/OGLAL.dir/build
 .PHONY : OGLAL/fast
 
+src/OGAL.o: src/OGAL.cpp.o
+
+.PHONY : src/OGAL.o
+
+# target to build an object file
+src/OGAL.cpp.o:
+	$(MAKE) -f CMakeFiles/OGLAL.dir/build.make CMakeFiles/OGLAL.dir/src/OGAL.cpp.o
+.PHONY : src/OGAL.cpp.o
+
+src/OGAL.i: src/OGAL.cpp.i
+
+.PHONY : src/OGAL.i
+
+# target to preprocess a source file
+src/OGAL.cpp.i:
+	$(MAKE) -f CMakeFiles/OGLAL.dir/build.make CMakeFiles/OGLAL.dir/src/OGAL.cpp.i
+.PHONY : src/OGAL.cpp.i
+
+src/OGAL.s: src/OGAL.cpp.s
+
+.PHONY : src/OGAL.s
+
+# target to generate assembly for a file
+src/OGAL.cpp.s:
+	$(MAKE) -f CMakeFiles/OGLAL.dir/build.make CMakeFiles/OGLAL.dir/src/OGAL.cpp.s
+.PHONY : src/OGAL.cpp.s
+
 src/event.o: src/event.cpp.o
 
 .PHONY : src/event.o
@@ -429,6 +456,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... OGLAL"
 	@echo "... edit_cache"
+	@echo "... src/OGAL.o"
+	@echo "... src/OGAL.i"
+	@echo "... src/OGAL.s"
 	@echo "... src/event.o"
 	@echo "... src/event.i"
 	@echo "... src/event.s"

@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/main/C++/OGLAL/src/OGAL.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/OGAL.cpp.o"
   "/home/main/C++/OGLAL/src/event.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/event.cpp.o"
   "/home/main/C++/OGLAL/src/main.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/main.cpp.o"
   "/home/main/C++/OGLAL/src/program.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/program.cpp.o"

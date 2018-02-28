@@ -7,29 +7,29 @@
 #include <glm/glm.hpp>
 
 namespace OGAL {
-    class equilateral_triangle: public renderable {
+    class EquilateralTriangle: public Renderable {
         public:
 
-            equilateral_triangle();
-            ~equilateral_triangle();
+            EquilateralTriangle();
+            ~EquilateralTriangle();
 
-            glm::vec<2, float, (glm::qualifier)0> position;
-            glm::vec<4, float, (glm::qualifier)0> color;
-            glm::vec<2, float, (glm::qualifier)0> uv;
+            glm::vec<2, float, (glm::qualifier)0> position_;
+            glm::vec<4, float, (glm::qualifier)0> color_;
+            glm::vec<2, float, (glm::qualifier)0> uv_;
 
             std::vector<GLuint> return_vertex_buffer_ids();
             std::vector<GLuint> return_vertex_buffer_sizes();
 
-            void set_dimensions(short unsigned int pType, GLfloat pA);
+            void set_dimensions(short unsigned int type, GLfloat a);
 
         protected:
 
-            short unsigned int type;
-            short unsigned int a;
+            short unsigned int type_;
+            short unsigned int a_;
 
             void recalculate();
 
-            OGAL::vbo vertex_buffer;
+            OGAL::VBO vertex_buffer_;
 
         private:
 

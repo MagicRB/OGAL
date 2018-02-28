@@ -7,16 +7,16 @@
 #include <string>
 
 namespace OGAL {
-    class shader {
+    class Shader {
         public:
-            shader();
-            ~shader();
+            Shader();
+            ~Shader();
 
-            GLuint shader_id;
+            GLuint shader_id_;
             void load_shader(std::string shader_text, GLenum type);
         protected:
-            GLint result;
-            int log_lenght;
+            GLint result_;
+            int log_lenght_;
         private:
 
     };

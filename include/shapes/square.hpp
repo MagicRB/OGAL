@@ -8,30 +8,43 @@
 #include <glm/glm.hpp>
 
 namespace OGAL {
-    class square: public renderable {
+    class Square: public Renderable {
         public:
 
-            square();
-            ~square();
-
-            glm::vec<2, float, (glm::qualifier)0> position;
-            glm::vec<4, float, (glm::qualifier)0> color;
-            glm::vec<2, float, (glm::qualifier)0> uv;
+            Square();
+            ~Square();
 
             std::vector<OGAL::buffer_texture_pair2> return_buffer_texture_pairs();
 
-            void set_dimensions(short unsigned int pType, GLfloat pA);
+            void set_dimensions(short unsigned int type, GLfloat a);
 
-            OGAL::texture texture;
+            void set_position(glm::vec<2, float, (glm::qualifier)0> position);
+            void set_position(float x, float y);
+
+            glm::vec<2, float, (glm::qualifier)0> get_position();
+
+            void set_color(glm::vec<4, float, (glm::qualifier)0> color);
+            void set_color(GLuint r, GLuint g, GLuint b, GLuint a);
+
+            glm::vec<4, float, (glm::qualifier)0> get_color();
+
+            void enable_texture(bool use_texture);
+
+            OGAL::Texture texture_;
 
         protected:
 
-            short unsigned int type;
-            short unsigned int a;
+            short unsigned int type_;
+            short unsigned int a_;
+
+            GLuint use_texture_ = 0;
 
             void recalculate();
 
-            OGAL::vbo vertex_buffer;
+            glm::vec<2, float, (glm::qualifier)0> position_;
+            glm::vec<4, float, (glm::qualifier)0> color_;
+
+            OGAL::VBO vertex_buffer_;
 
         private:
 

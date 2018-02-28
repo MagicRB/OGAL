@@ -3,29 +3,29 @@
 #include <vector>
 #include <stdio.h>
 
-OGAL::program::program()
+OGAL::Program::Program()
 {}
 
-OGAL::program::~program()
+OGAL::Program::~Program()
 {
-    glDeleteProgram(program_id);
+    glDeleteProgram(program_id_);
 }
 
-void OGAL::program::load_program(GLuint vertex_shader, GLuint fragment_shader)
+void OGAL::Program::load_program(GLuint vertex_shader, GLuint fragment_shader)
 {
-    program_id = glCreateProgram();
-	glAttachShader(program_id, vertex_shader);
-	glAttachShader(program_id, fragment_shader);
-	glLinkProgram(program_id);
+    program_id_ = glCreateProgram();
+	glAttachShader(program_id_, vertex_shader);
+	glAttachShader(program_id_, fragment_shader);
+	glLinkProgram(program_id_);
 
-	glGetProgramiv(program_id, GL_LINK_STATUS, &result);
-	glGetProgramiv(program_id, GL_INFO_LOG_LENGTH, &log_lenght);
-	if (log_lenght > 0) {
-        std::vector<char> program_error_message(log_lenght + 1);
-        glGetProgramInfoLog(program_id, log_lenght, NULL, &program_error_message[0]);
+	glGetProgramiv(program_id_, GL_LINK_STATUS, &result_);
+	glGetProgramiv(program_id_, GL_INFO_LOG_LENGTH, &log_lenght_);
+	if (log_lenght_ > 0) {
+        std::vector<char> program_error_message(log_lenght_ + 1);
+        glGetProgramInfoLog(program_id_, log_lenght_, NULL, &program_error_message[0]);
         printf("%s\n", &program_error_message[0]);
 	}
 
-    glDetachShader(program_id, vertex_shader);
-	glDetachShader(program_id, fragment_shader);
+    glDetachShader(program_id_, vertex_shader);
+	glDetachShader(program_id_, fragment_shader);
 }

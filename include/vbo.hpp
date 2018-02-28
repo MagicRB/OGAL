@@ -7,17 +7,17 @@
 #include <GL/gl.h>
 
 namespace OGAL {
-    class vbo {
+    class VBO {
         public:
-            vbo();
-            ~vbo();
+            VBO();
+            ~VBO();
 
             void bind();
 
             void set_data(std::vector<GLfloat> data);
 
-            GLuint vbo_id;
-            GLuint size;
+            GLuint vbo_id_;
+            GLuint size_;
 
         protected:
 

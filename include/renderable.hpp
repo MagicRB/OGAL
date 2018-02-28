@@ -13,12 +13,13 @@ namespace OGAL {
         GLuint buffer_id;
         GLuint buffer_size;
         GLuint texture_id;
+        GLuint use_texture;
     };
 
-    class renderable {
+    class Renderable {
         public:
-            renderable();
-            ~renderable();
+            Renderable();
+            ~Renderable();
 
             virtual std::vector<OGAL::buffer_texture_pair2> return_buffer_texture_pairs() = 0;
 

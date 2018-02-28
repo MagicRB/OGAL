@@ -1,19 +1,19 @@
 #include "texture.hpp"
 
-OGAL::texture::texture()
+OGAL::Texture::Texture()
 {
-    glGenTextures(1, &texture_id);
+    glGenTextures(1, &texture_id_);
 }
 
-OGAL::texture::~texture()
+OGAL::Texture::~Texture()
 {}
 
-void OGAL::texture::bind()
+void OGAL::Texture::bind()
 {
-    glBindTexture(GL_TEXTURE_2D, texture_id);
+    glBindTexture(GL_TEXTURE_2D, texture_id_);
 }
 
-void OGAL::texture::set_data(unsigned char* data, GLuint width, GLuint height)
+void OGAL::Texture::set_data(unsigned char* data, GLuint width, GLuint height)
 {
     bind();
 

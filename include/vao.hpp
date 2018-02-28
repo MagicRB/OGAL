@@ -5,14 +5,14 @@
 #include <GL/gl.h>
 
 namespace OGAL {
-    class vao {
+    class VAO {
         public:
-            vao();
-            ~vao();
+            VAO();
+            ~VAO();
 
             void bind();
 
-            GLuint vao_id;
+            GLuint vao_id_;
         protected:
 
         private:
