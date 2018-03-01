@@ -16,10 +16,10 @@ file(GLOB SOURCES "src/*.cpp" "include/*.h" "include/*.hpp" "src/shapes/*.cpp" "
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../run)
 
-add_executable(OGLAL ${SOURCES})
+add_executable(OGAL ${SOURCES})
 
 if(WIN32)
-	target_link_libraries(OGLAL )
+	target_link_libraries(OGAL glfw3 glew32 opengl32)
 elseif(UNIX)
-	target_link_libraries(OGLAL glfw GL GLEW)
+	target_link_libraries(OGAL glfw GL GLEW)
 endif(WIN32)

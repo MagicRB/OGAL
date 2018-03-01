@@ -4,24 +4,25 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/main/C++/OGLAL/src/OGAL.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/OGAL.cpp.o"
-  "/home/main/C++/OGLAL/src/event.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/event.cpp.o"
-  "/home/main/C++/OGLAL/src/main.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/main.cpp.o"
-  "/home/main/C++/OGLAL/src/program.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/program.cpp.o"
-  "/home/main/C++/OGLAL/src/render_list.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/render_list.cpp.o"
-  "/home/main/C++/OGLAL/src/renderable.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/renderable.cpp.o"
-  "/home/main/C++/OGLAL/src/shader.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/shader.cpp.o"
-  "/home/main/C++/OGLAL/src/shapes/equilateral_triangle.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/shapes/equilateral_triangle.cpp.o"
-  "/home/main/C++/OGLAL/src/shapes/square.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/shapes/square.cpp.o"
-  "/home/main/C++/OGLAL/src/texture.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/texture.cpp.o"
-  "/home/main/C++/OGLAL/src/vao.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/vao.cpp.o"
-  "/home/main/C++/OGLAL/src/vbo.cpp" "/home/main/C++/OGLAL/build/CMakeFiles/OGLAL.dir/src/vbo.cpp.o"
+  "F:/Projects/C++/OGAL/src/OGAL.cpp" "F:/Projects/C++/OGAL/build/CMakeFiles/OGLAL.dir/src/OGAL.cpp.obj"
+  "F:/Projects/C++/OGAL/src/event.cpp" "F:/Projects/C++/OGAL/build/CMakeFiles/OGLAL.dir/src/event.cpp.obj"
+  "F:/Projects/C++/OGAL/src/main.cpp" "F:/Projects/C++/OGAL/build/CMakeFiles/OGLAL.dir/src/main.cpp.obj"
+  "F:/Projects/C++/OGAL/src/program.cpp" "F:/Projects/C++/OGAL/build/CMakeFiles/OGLAL.dir/src/program.cpp.obj"
+  "F:/Projects/C++/OGAL/src/render_list.cpp" "F:/Projects/C++/OGAL/build/CMakeFiles/OGLAL.dir/src/render_list.cpp.obj"
+  "F:/Projects/C++/OGAL/src/renderable.cpp" "F:/Projects/C++/OGAL/build/CMakeFiles/OGLAL.dir/src/renderable.cpp.obj"
+  "F:/Projects/C++/OGAL/src/shader.cpp" "F:/Projects/C++/OGAL/build/CMakeFiles/OGLAL.dir/src/shader.cpp.obj"
+  "F:/Projects/C++/OGAL/src/shapes/equilateral_triangle.cpp" "F:/Projects/C++/OGAL/build/CMakeFiles/OGLAL.dir/src/shapes/equilateral_triangle.cpp.obj"
+  "F:/Projects/C++/OGAL/src/shapes/square.cpp" "F:/Projects/C++/OGAL/build/CMakeFiles/OGLAL.dir/src/shapes/square.cpp.obj"
+  "F:/Projects/C++/OGAL/src/texture.cpp" "F:/Projects/C++/OGAL/build/CMakeFiles/OGLAL.dir/src/texture.cpp.obj"
+  "F:/Projects/C++/OGAL/src/vao.cpp" "F:/Projects/C++/OGAL/build/CMakeFiles/OGLAL.dir/src/vao.cpp.obj"
+  "F:/Projects/C++/OGAL/src/vbo.cpp" "F:/Projects/C++/OGAL/build/CMakeFiles/OGLAL.dir/src/vbo.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../include"
+  "../include_win32"
   )
 
 # Targets to which this target links.

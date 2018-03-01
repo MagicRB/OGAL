@@ -132,13 +132,13 @@ GL/glew.h
 GL/gl.h
 -
 
-/home/main/C++/OGLAL/src/OGAL.cpp
+F:/Projects/C++/OGAL/src/OGAL.cpp
 OGAL.hpp
-/home/main/C++/OGLAL/src/OGAL.hpp
+F:/Projects/C++/OGAL/src/OGAL.hpp
 
-/home/main/C++/OGLAL/src/event.cpp
+F:/Projects/C++/OGAL/src/event.cpp
 
-/home/main/C++/OGLAL/src/main.cpp
+F:/Projects/C++/OGAL/src/main.cpp
 GL/glew.h
 -
 GL/gl.h
@@ -152,39 +152,39 @@ glm/gtc/matrix_transform.hpp
 glm/gtx/transform.hpp
 -
 OGAL.hpp
-/home/main/C++/OGLAL/src/OGAL.hpp
+F:/Projects/C++/OGAL/src/OGAL.hpp
 shapes/equilateral_triangle.hpp
-/home/main/C++/OGLAL/src/shapes/equilateral_triangle.hpp
+F:/Projects/C++/OGAL/src/shapes/equilateral_triangle.hpp
 shapes/square.hpp
-/home/main/C++/OGLAL/src/shapes/square.hpp
+F:/Projects/C++/OGAL/src/shapes/square.hpp
 stb_image.h
-/home/main/C++/OGLAL/src/stb_image.h
+F:/Projects/C++/OGAL/src/stb_image.h
 stdio.h
 -
 vector
 -
 
-/home/main/C++/OGLAL/src/program.cpp
+F:/Projects/C++/OGAL/src/program.cpp
 program.hpp
-/home/main/C++/OGLAL/src/program.hpp
+F:/Projects/C++/OGAL/src/program.hpp
 vector
 -
 stdio.h
 -
 
-/home/main/C++/OGLAL/src/render_list.cpp
+F:/Projects/C++/OGAL/src/render_list.cpp
 render_list.hpp
-/home/main/C++/OGLAL/src/render_list.hpp
+F:/Projects/C++/OGAL/src/render_list.hpp
 stdio.h
 -
 
-/home/main/C++/OGLAL/src/renderable.cpp
+F:/Projects/C++/OGAL/src/renderable.cpp
 renderable.hpp
-/home/main/C++/OGLAL/src/renderable.hpp
+F:/Projects/C++/OGAL/src/renderable.hpp
 
-/home/main/C++/OGLAL/src/shader.cpp
+F:/Projects/C++/OGAL/src/shader.cpp
 shader.hpp
-/home/main/C++/OGLAL/src/shader.hpp
+F:/Projects/C++/OGAL/src/shader.hpp
 stdio.h
 -
 vector
@@ -196,29 +196,29 @@ GL/glew.h
 GL/gl.h
 -
 
-/home/main/C++/OGLAL/src/shapes/equilateral_triangle.cpp
+F:/Projects/C++/OGAL/src/shapes/equilateral_triangle.cpp
 shapes/equilateral_triangle.hpp
-/home/main/C++/OGLAL/src/shapes/shapes/equilateral_triangle.hpp
+F:/Projects/C++/OGAL/src/shapes/shapes/equilateral_triangle.hpp
 math.h
 -
 stdio.h
 -
 
-/home/main/C++/OGLAL/src/shapes/square.cpp
+F:/Projects/C++/OGAL/src/shapes/square.cpp
 shapes/square.hpp
-/home/main/C++/OGLAL/src/shapes/shapes/square.hpp
+F:/Projects/C++/OGAL/src/shapes/shapes/square.hpp
 
-/home/main/C++/OGLAL/src/texture.cpp
+F:/Projects/C++/OGAL/src/texture.cpp
 texture.hpp
-/home/main/C++/OGLAL/src/texture.hpp
+F:/Projects/C++/OGAL/src/texture.hpp
 
-/home/main/C++/OGLAL/src/vao.cpp
+F:/Projects/C++/OGAL/src/vao.cpp
 vao.hpp
-/home/main/C++/OGLAL/src/vao.hpp
+F:/Projects/C++/OGAL/src/vao.hpp
 
-/home/main/C++/OGLAL/src/vbo.cpp
+F:/Projects/C++/OGAL/src/vbo.cpp
 vbo.hpp
-/home/main/C++/OGLAL/src/vbo.hpp
+F:/Projects/C++/OGAL/src/vbo.hpp
 stdio.h
 -
 

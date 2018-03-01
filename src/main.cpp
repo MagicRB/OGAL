@@ -19,8 +19,8 @@
 #include <stdio.h>
 #include <vector>
 
-#define WINDOW_WIDTH 500
-#define WINDOW_HEIGHT 500
+#define WINDOW_WIDTH 800.0f
+#define WINDOW_HEIGHT 800.0f
 
 void error_callback(int error, const char *description) {
     printf("%s", description);
@@ -47,6 +47,10 @@ int main(void) {
     }
 
     glfwMakeContextCurrent(window);
+
+    glfwSwapInterval(1);
+
+    glfwSetFramebufferSizeCallback(window, OGAL::window_size_callback);
 
     glfwSetKeyCallback(window, OGAL::key_callback);
 
@@ -145,7 +149,7 @@ int main(void) {
 
     printf("%s\n", glGetString(GL_VERSION));
 
-    glm::mat4 projection = glm::ortho(-50.0f, 50.0f, -50.0f, 50.0f);
+    glm::mat4 projection = glm::ortho(-(float)(WINDOW_WIDTH/WINDOW_HEIGHT*50.0f), (float)(WINDOW_WIDTH/WINDOW_HEIGHT*50.0f), -50.0f, 50.0f);
 
     glm::vec2 camera_pos = glm::vec2(0, 0);
 
@@ -153,6 +157,9 @@ int main(void) {
         OGAL::event event = OGAL::poll_events();
         if (event.key_event_.key == GLFW_KEY_Q && event.key_event_.action == GLFW_PRESS) {
             glfwSetWindowShouldClose(window, GLFW_TRUE);
+        } else if (event.type == 1) {
+            glViewport(0,0, event.window_event_.width, event.window_event_.height);
+            projection = glm::ortho(-(float)((float)event.window_event_.width/(float)event.window_event_.height*50.0f), (float)((float)event.window_event_.width/(float)event.window_event_.height*50.0f), -50.0f, 50.0f);
         } if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
             camera_pos.x += 1;
         } if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
