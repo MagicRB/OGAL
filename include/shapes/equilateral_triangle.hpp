@@ -13,14 +13,30 @@ namespace OGAL {
             EquilateralTriangle();
             ~EquilateralTriangle();
 
-            glm::vec<2, float, (glm::qualifier)0> position_;
-            glm::vec<4, float, (glm::qualifier)0> color_;
-            glm::vec<2, float, (glm::qualifier)0> uv_;
+            /// Overrides Renderable::return_buffer_texture_pairs(), and is called by render_list in order to
+            /// get the data it needs to render this triangle
+            std::vector<OGAL::buffer_texture_pair2> return_buffer_texture_pairs() override;
 
-            std::vector<GLuint> return_vertex_buffer_ids();
-            std::vector<GLuint> return_vertex_buffer_sizes();
-
+            /// Sets dimensions according to a which can be either a side or a height of the triangle,
+            /// type of a depends on short unsigned int type which can be:
+            ///         0 - height
+            ///         1 - side
             void set_dimensions(short unsigned int type, GLfloat a);
+
+            /// Getter and setter functions for the triangle's position
+            void set_position(glm::vec<2, float, (glm::qualifier)0> position);
+            void set_position(float x, float y);
+
+            glm::vec<2, float, (glm::qualifier)0> get_position();
+
+            /// Getter and setter functions for the triangle's color
+            void set_color(glm::vec<4, float, (glm::qualifier)0> color);
+            void set_color(GLuint r, GLuint g, GLuint b, GLuint a);
+
+            glm::vec<4, float, (glm::qualifier)0> get_color();
+
+            /// The vertex buffer that was generated, when either the dimensions, position, or color was changed
+            std::vector<GLfloat> generated_vertex_buffer_;
 
         protected:
 
@@ -28,6 +44,10 @@ namespace OGAL {
             short unsigned int a_;
 
             void recalculate();
+
+            glm::vec<2, float, (glm::qualifier)0> position_;
+            glm::vec<4, float, (glm::qualifier)0> color_;
+            glm::vec<2, float, (glm::qualifier)0> uv_;
 
             OGAL::VBO vertex_buffer_;
 

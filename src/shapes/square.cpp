@@ -75,6 +75,8 @@ void OGAL::Square::recalculate()
         };
     }
 
+    generated_vertex_buffer_ = v;
+
     vertex_buffer_.bind();
 
     vertex_buffer_.size_ = v.size();

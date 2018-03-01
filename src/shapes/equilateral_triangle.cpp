@@ -12,14 +12,43 @@ OGAL::EquilateralTriangle::EquilateralTriangle()
 OGAL::EquilateralTriangle::~EquilateralTriangle()
 {}
 
-std::vector<GLuint> OGAL::EquilateralTriangle::return_vertex_buffer_ids()
+std::vector<OGAL::buffer_texture_pair2> OGAL::EquilateralTriangle::return_buffer_texture_pairs()
 {
-    return std::vector<GLuint> (1, vertex_buffer_.vbo_id_);
+     return std::vector<OGAL::buffer_texture_pair2>(1, {vertex_buffer_.vbo_id_, vertex_buffer_.size_ / 9, 0, 0});
 }
 
-std::vector<GLuint> OGAL::EquilateralTriangle::return_vertex_buffer_sizes()
+void OGAL::EquilateralTriangle::set_position(glm::vec<2, float, (glm::qualifier)0> position)
 {
-    return std::vector<GLuint> (1, vertex_buffer_.size_ / 3);
+    position_ = position;
+    recalculate();
+}
+
+void OGAL::EquilateralTriangle::set_position(float x, float y)
+{
+    position_ = glm::vec<2, float, (glm::qualifier)0>(x, y);
+    recalculate();
+}
+
+glm::vec<2, float, (glm::qualifier)0> OGAL::EquilateralTriangle::get_position()
+{
+    return position_;
+}
+
+void OGAL::EquilateralTriangle::set_color(glm::vec<4, float, (glm::qualifier)0> color)
+{
+    color_ = color;
+    recalculate();
+}
+
+void OGAL::EquilateralTriangle::set_color(GLuint r, GLuint g, GLuint b, GLuint a)
+{
+    color_ = glm::vec<4, float, (glm::qualifier)0>(r, g, b, a);
+    recalculate();
+}
+
+glm::vec<4, float, (glm::qualifier)0> OGAL::EquilateralTriangle::get_color()
+{
+    return color_;
 }
 
 void OGAL::EquilateralTriangle::set_dimensions(short unsigned int type, GLfloat a)
@@ -46,6 +75,8 @@ void OGAL::EquilateralTriangle::recalculate()
                 position_.x + a_ / 2.0f, position_.y - (a_ / 2.0f * sqrt(3.0f)) / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, uv_.x, uv_.y
         };
     }
+
+    generated_vertex_buffer_ = v;
 
     vertex_buffer_.bind();
 

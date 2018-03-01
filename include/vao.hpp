@@ -10,8 +10,10 @@ namespace OGAL {
             VAO();
             ~VAO();
 
+            /// Binds this VAO as the the current one
             void bind();
 
+            /// ID of this VAO
             GLuint vao_id_;
         protected:
 

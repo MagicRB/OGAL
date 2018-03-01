@@ -21,7 +21,8 @@ namespace OGAL {
             Renderable();
             ~Renderable();
 
-            virtual std::vector<OGAL::buffer_texture_pair2> return_buffer_texture_pairs() = 0;
+            /// Function which returns everything needed to render a mesh
+            virtual std::vector<OGAL::buffer_texture_pair2> return_buffer_texture_pairs();
 
         protected:
 

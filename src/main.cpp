@@ -19,8 +19,8 @@
 #include <stdio.h>
 #include <vector>
 
-#define WINDOW_WIDTH 400
-#define WINDOW_HEIGHT 400
+#define WINDOW_WIDTH 500
+#define WINDOW_HEIGHT 500
 
 void error_callback(int error, const char *description) {
     printf("%s", description);
@@ -111,9 +111,12 @@ int main(void) {
 
     OGAL::Square square;
     OGAL::Square square2;
+    OGAL::EquilateralTriangle eq;
 
     square.set_color(glm::vec4(255.0f, 125.0f, 0.0f, 0.0f));
     square2.set_color(glm::vec4(0.0f, 125.0f, 255.0f, 0.0f));
+
+    square2.set_position(45, square2.get_position().y);
 
     int width, height, bpp;
     unsigned char *rgb = stbi_load("image.png", &width, &height, &bpp, 4);
@@ -131,26 +134,34 @@ int main(void) {
     square2.set_position(0, 20);
     square2.set_dimensions(0, 20);
 
-    //    OGAL::equilateral_triangle eq;
-    //    eq.position.y = 50;
-    //    eq.set_dimensions(1, 100);
+    eq.set_position(50, 50);
+    eq.set_color(255.0f, 0.0f, 0.0f, 0.0f);
+    eq.set_dimensions(0, 100);
 
     OGAL::render_list render_list;
     render_list.add_renderable(&square);
     render_list.add_renderable(&square2);
-    // render_list.add_renderable(&eq);
+    render_list.add_renderable(&eq);
 
     printf("%s\n", glGetString(GL_VERSION));
 
     glm::mat4 projection = glm::ortho(-50.0f, 50.0f, -50.0f, 50.0f);
 
-    glm::vec2 camera_pos = glm::vec2(40, 0);
+    glm::vec2 camera_pos = glm::vec2(0, 0);
 
     while (!glfwWindowShouldClose(window)) {
-    OGAL::event event = OGAL::poll_events();
-    if (event.key_event_.key == GLFW_KEY_Q && event.key_event_.action == GLFW_PRESS) {
-        glfwSetWindowShouldClose(window, GLFW_TRUE);
-    }
+        OGAL::event event = OGAL::poll_events();
+        if (event.key_event_.key == GLFW_KEY_Q && event.key_event_.action == GLFW_PRESS) {
+            glfwSetWindowShouldClose(window, GLFW_TRUE);
+        } if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+            camera_pos.x += 1;
+        } if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
+            camera_pos.x -= 1;
+        } if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
+            camera_pos.y -= 1;
+        } if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
+            camera_pos.y += 1;
+        }
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
