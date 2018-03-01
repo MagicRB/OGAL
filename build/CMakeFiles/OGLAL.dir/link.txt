@@ -1,3 +1,0 @@
-F:\Programs\CMake\bin\cmake.exe -E remove -f CMakeFiles\OGLAL.dir/objects.a
-F:\Programs\MinGW\mingw64\bin\ar.exe cr CMakeFiles\OGLAL.dir/objects.a @CMakeFiles\OGLAL.dir\objects1.rsp
-F:\Programs\MinGW\mingw64\bin\g++.exe    -Wl,--whole-archive CMakeFiles\OGLAL.dir/objects.a -Wl,--no-whole-archive  -o ..\run\OGLAL.exe -Wl,--out-implib,libOGLAL.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\OGLAL.dir\linklibs.rsp

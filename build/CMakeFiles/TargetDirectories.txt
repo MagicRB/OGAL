@@ -1,3 +1,0 @@
-F:/Projects/C++/OGAL/build/CMakeFiles/OGAL.dir
-F:/Projects/C++/OGAL/build/CMakeFiles/edit_cache.dir
-F:/Projects/C++/OGAL/build/CMakeFiles/rebuild_cache.dir
