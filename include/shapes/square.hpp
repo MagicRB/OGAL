@@ -14,7 +14,7 @@ namespace OGAL {
             Square();
             ~Square();
 
-            /// Overrides Renderable::return_buffer_texture_pairs(), and is called by render_list in order to
+            /// Overrides Renderable::return_buffer_texture_pairs(), and is called by OGAL::draw in order to
             /// get the data it needs to render this square
             std::vector<OGAL::buffer_texture_pair2> return_buffer_texture_pairs() override;
 

@@ -18,9 +18,10 @@
 
 #include <stdio.h>
 #include <vector>
+#include <iostream>
 
-#define WINDOW_WIDTH 800.0f
-#define WINDOW_HEIGHT 800.0f
+#define WINDOW_WIDTH 500.0f
+#define WINDOW_HEIGHT 600.0f
 
 void error_callback(int error, const char *description) {
     printf("%s", description);
@@ -129,7 +130,7 @@ int main(void) {
     square.set_dimensions(0, 20);
 
     square.enable_texture(true);
-    square2.enable_texture(true);
+    square2.enable_texture(false);
 
     stbi_image_free(rgb);
 
@@ -142,24 +143,52 @@ int main(void) {
     eq.set_color(255.0f, 0.0f, 0.0f, 0.0f);
     eq.set_dimensions(0, 100);
 
-    OGAL::render_list render_list;
-    render_list.add_renderable(&square);
-    render_list.add_renderable(&square2);
-    render_list.add_renderable(&eq);
-
     printf("%s\n", glGetString(GL_VERSION));
 
-    glm::mat4 projection = glm::ortho(-(float)(WINDOW_WIDTH/WINDOW_HEIGHT*50.0f), (float)(WINDOW_WIDTH/WINDOW_HEIGHT*50.0f), -50.0f, 50.0f);
+    glm::mat4 projection = glm::ortho(-50.0f, 50.0f, -60.0f, 60.0f);
 
     glm::vec2 camera_pos = glm::vec2(0, 0);
 
+    float scale = 50.0f;
+
+    GLuint texture_enabled;
+
     while (!glfwWindowShouldClose(window)) {
         OGAL::event event = OGAL::poll_events();
-        if (event.key_event_.key == GLFW_KEY_Q && event.key_event_.action == GLFW_PRESS) {
-            glfwSetWindowShouldClose(window, GLFW_TRUE);
+        if (event.type == 0) {
+            if (event.key_event_.key == GLFW_KEY_Q && event.key_event_.action == GLFW_PRESS) {
+                glfwSetWindowShouldClose(window, GLFW_TRUE);
+            } else if (event.key_event_.key == GLFW_KEY_Y && event.key_event_.action == GLFW_PRESS) {
+                square.enable_texture(!texture_enabled);
+                texture_enabled = !texture_enabled;
+            } else if (event.key_event_.key == GLFW_KEY_R && event.key_event_.action == GLFW_PRESS) {
+                scale += 1;
+
+                int width, height;
+                glfwGetWindowSize(window, &width, &height);
+
+                float aspect = scale * (float)height/(float)width;
+
+                projection = glm::ortho(-scale, scale, -aspect, aspect);
+
+            } else if (event.key_event_.key == GLFW_KEY_T && event.key_event_.action == GLFW_PRESS) {
+                scale -= 1;
+
+                int width, height;
+                glfwGetWindowSize(window, &width, &height);
+
+                float aspect = scale * (float)height/(float)width;
+
+                projection = glm::ortho(-scale, scale, -aspect, aspect);
+            }
         } else if (event.type == 1) {
             glViewport(0,0, event.window_event_.width, event.window_event_.height);
-            projection = glm::ortho(-(float)((float)event.window_event_.width/(float)event.window_event_.height*50.0f), (float)((float)event.window_event_.width/(float)event.window_event_.height*50.0f), -50.0f, 50.0f);
+
+            float aspect = scale * (float)event.window_event_.height/(float)event.window_event_.width;
+
+            std::cout << scale << "\n";
+
+            projection = glm::ortho(-scale, scale, -aspect, aspect);
         } if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
             camera_pos.x += 1;
         } if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
@@ -172,7 +201,9 @@ int main(void) {
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        OGAL::draw_render_list(render_list, main_program.program_id_, projection, camera_pos);
+        OGAL::draw(window, &square, main_program.program_id_, projection, camera_pos);
+        OGAL::draw(window, &square2, main_program.program_id_, projection, camera_pos);
+        OGAL::draw(window, &eq, main_program.program_id_, projection, camera_pos);
 
         glfwSwapBuffers(window);
     }

@@ -45,7 +45,7 @@ glm::vec<4, float, (glm::qualifier)0> OGAL::Square::get_color()
 
 std::vector<OGAL::buffer_texture_pair2> OGAL::Square::return_buffer_texture_pairs()
 {
-     return std::vector<OGAL::buffer_texture_pair2>(1, {vertex_buffer_.vbo_id_, vertex_buffer_.size_ / 9, texture_.texture_id_, use_texture_});
+    return std::vector<OGAL::buffer_texture_pair2>(1, {vertex_buffer_.vbo_id_, vertex_buffer_.size_ / 9, texture_.texture_id_, use_texture_});
 }
 
 void OGAL::Square::set_dimensions(short unsigned int type, GLfloat a)
