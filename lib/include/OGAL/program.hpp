@@ -6,20 +6,22 @@
 
 namespace OGAL {
     class Program {
-        public:
-            Program();
-            ~Program();
-
-            /// ID of this shader program
-            GLuint program_id_;
-
-            /// Creates a new program, with the two speciefied shaders
-            void load_program(GLuint vertex_shader, GLuint fragment_shader);
-        protected:
-            GLint result_;
-            int log_lenght_;
-        private:
-
+    public:
+        Program();
+        
+        ~Program();
+        
+        /// ID of this shader program
+        GLuint program_id_;
+        
+        /// Creates a new program, with the two speciefied shaders
+        void load_program(GLuint vertex_shader, GLuint fragment_shader);
+    
+    protected:
+        GLint result_;
+        int log_lenght_;
+    private:
+    
     };
 }
 #endif //PROGRAM_HPP

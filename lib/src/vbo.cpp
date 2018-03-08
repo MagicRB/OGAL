@@ -1,7 +1,5 @@
 #include "OGAL/vbo.hpp"
 
-#include <stdio.h>
-
 OGAL::VBO::VBO()
 {
     glGenBuffers(1, &vbo_id_);

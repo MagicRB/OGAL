@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 3.0)
 project (OGAL)
 
-file (GLOB LIB_SRC "lib/src/*.cpp" "lib/src/*/*.cpp")
+file (GLOB LIB_SRC "lib/src/*.cpp" "lib/src/*/*.cpp" "lib/include/OGAL/*.hpp" "lib/include/OGAL/*/*.hpp" "lib/include/OGAL/*.h")
 
 add_library (OGAL SHARED ${LIB_SRC})
 
@@ -19,19 +19,16 @@ if (OPENGL_FOUND)
 	target_link_libraries (OGAL ${OPENGL_LIBRARIES})
 endif(OPENGL_FOUND)
 
-if (BUILD_TEST)
-	add_executable (OGAL_DEMO "test/src/main.cpp")
-	target_link_libraries (OGAL_DEMO OGAL)
-endif (BUILD_TEST)
+add_executable (OGAL_DEMO "test/src/main.cpp")
+target_link_libraries (OGAL_DEMO OGAL)
 
-find_package(glfw3 REQUIRED)
-
-if (glfw3_FOUND)
+if (WIN32)
+	target_link_libraries (OGAL glfw3)
+	target_link_libraries (OGAL_DEMO glfw3)
+else ()
 	target_link_libraries (OGAL glfw)
-	if (BUILD_TEST)
-		target_link_libraries (OGAL_DEMO glfw)
-	endif (BUILD_TEST)
-endif(glfw3_FOUND)
+	target_link_libraries (OGAL_DEMO glfw)
+endif (WIN32)
 
 install (TARGETS OGAL DESTINATION "lib/")
 install (DIRECTORY lib/include/ DESTINATION "include/")

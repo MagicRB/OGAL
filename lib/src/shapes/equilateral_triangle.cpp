@@ -1,7 +1,6 @@
 #include "OGAL/shapes/equilateral_triangle.hpp"
 
 #include <math.h>
-#include <stdio.h>
 
 OGAL::EquilateralTriangle::EquilateralTriangle()
 {
@@ -9,15 +8,15 @@ OGAL::EquilateralTriangle::EquilateralTriangle()
     position_.y = 0;
 }
 
-OGAL::EquilateralTriangle::~EquilateralTriangle()
-{}
+OGAL::EquilateralTriangle::~EquilateralTriangle() {}
 
 std::vector<OGAL::buffer_texture_pair> OGAL::EquilateralTriangle::return_buffer_texture_pairs()
 {
-     return std::vector<OGAL::buffer_texture_pair>(1, {GL_TRIANGLES, vertex_buffer_.vbo_id_, vertex_buffer_.size_ / 9, 0, 0});
+    return std::vector<OGAL::buffer_texture_pair>(1, {GL_TRIANGLES, vertex_buffer_.vbo_id_, vertex_buffer_.size_ / 9, 0,
+                                                      0});
 }
 
-void OGAL::EquilateralTriangle::set_position(glm::vec<2, float, (glm::qualifier)0> position)
+void OGAL::EquilateralTriangle::set_position(glm::vec<2, float, (glm::qualifier) 0> position)
 {
     position_ = position;
     recalculate();
@@ -25,16 +24,16 @@ void OGAL::EquilateralTriangle::set_position(glm::vec<2, float, (glm::qualifier)
 
 void OGAL::EquilateralTriangle::set_position(float x, float y)
 {
-    position_ = glm::vec<2, float, (glm::qualifier)0>(x, y);
+    position_ = glm::vec<2, float, (glm::qualifier) 0>(x, y);
     recalculate();
 }
 
-glm::vec<2, float, (glm::qualifier)0> OGAL::EquilateralTriangle::get_position()
+glm::vec<2, float, (glm::qualifier) 0> OGAL::EquilateralTriangle::get_position()
 {
     return position_;
 }
 
-void OGAL::EquilateralTriangle::set_color(glm::vec<4, float, (glm::qualifier)0> color)
+void OGAL::EquilateralTriangle::set_color(glm::vec<4, float, (glm::qualifier) 0> color)
 {
     color_ = color;
     recalculate();
@@ -42,11 +41,11 @@ void OGAL::EquilateralTriangle::set_color(glm::vec<4, float, (glm::qualifier)0> 
 
 void OGAL::EquilateralTriangle::set_color(GLuint r, GLuint g, GLuint b, GLuint a)
 {
-    color_ = glm::vec<4, float, (glm::qualifier)0>(r, g, b, a);
+    color_ = glm::vec<4, float, (glm::qualifier) 0>(r, g, b, a);
     recalculate();
 }
 
-glm::vec<4, float, (glm::qualifier)0> OGAL::EquilateralTriangle::get_color()
+glm::vec<4, float, (glm::qualifier) 0> OGAL::EquilateralTriangle::get_color()
 {
     return color_;
 }
@@ -65,14 +64,19 @@ void OGAL::EquilateralTriangle::recalculate()
 
 
     if (type_ == 0) {
-        v = {   position_.x                                  , position_.y  + a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, uv_.x, uv_.y,
-                position_.x - (2.0f * a_ / sqrt(3.0f) / 2.0f), position_.y  - a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, uv_.x, uv_.y,
-                position_.x + (2.0f * a_ / sqrt(3.0f) / 2.0f), position_.y  - a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, uv_.x, uv_.y
+        v = {position_.x, position_.y + a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, uv_.x, uv_.y,
+             position_.x - (2.0f * a_ / sqrt(3.0f) / 2.0f), position_.y - a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b,
+             color_.a, uv_.x, uv_.y,
+             position_.x + (2.0f * a_ / sqrt(3.0f) / 2.0f), position_.y - a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b,
+             color_.a, uv_.x, uv_.y
         };
     } else if (type_ == 1) {
-        v = {   position_.x            , position_.y + (a_ / 2.0f * sqrt(3.0f)) / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, uv_.x, uv_.y,
-                position_.x - a_ / 2.0f, position_.y - (a_ / 2.0f * sqrt(3.0f)) / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, uv_.x, uv_.y,
-                position_.x + a_ / 2.0f, position_.y - (a_ / 2.0f * sqrt(3.0f)) / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, uv_.x, uv_.y
+        v = {position_.x, position_.y + (a_ / 2.0f * sqrt(3.0f)) / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a,
+             uv_.x, uv_.y,
+             position_.x - a_ / 2.0f, position_.y - (a_ / 2.0f * sqrt(3.0f)) / 2.0f, 0.0f, color_.r, color_.g, color_.b,
+             color_.a, uv_.x, uv_.y,
+             position_.x + a_ / 2.0f, position_.y - (a_ / 2.0f * sqrt(3.0f)) / 2.0f, 0.0f, color_.r, color_.g, color_.b,
+             color_.a, uv_.x, uv_.y
         };
     }
 

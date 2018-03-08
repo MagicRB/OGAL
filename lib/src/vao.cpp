@@ -5,8 +5,7 @@ OGAL::VAO::VAO()
     glGenVertexArrays(1, &vao_id_);
 }
 
-OGAL::VAO::~VAO()
-{}
+OGAL::VAO::~VAO() = default;
 
 void OGAL::VAO::bind()
 {

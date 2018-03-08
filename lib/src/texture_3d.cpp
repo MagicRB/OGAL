@@ -2,3 +2,29 @@
 // Created by Magic_RB on 3/8/2018.
 //
 
+#include "OGAL/texture_3d.hpp"
+
+OGAL::Texture3D::Texture3D()
+{
+
+}
+
+OGAL::Texture3D::~Texture3D()
+{
+
+}
+
+void OGAL::Texture3D::bind()
+{
+    glBindTexture(GL_TEXTURE_3D, texture_id_);
+}
+
+void OGAL::Texture3D::set_data(unsigned char *data, int width, int height, int layer)
+{
+    bind();
+    
+    glTexImage3D(GL_TEXTURE_3D, 0, GL_RGBA, width, height, layer, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+    
+    glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+}
