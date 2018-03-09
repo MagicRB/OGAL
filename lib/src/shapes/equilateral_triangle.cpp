@@ -1,14 +1,12 @@
 #include "OGAL/shapes/equilateral_triangle.hpp"
 
-#include <math.h>
-
 OGAL::EquilateralTriangle::EquilateralTriangle()
 {
     position_.x = 0;
     position_.y = 0;
 }
 
-OGAL::EquilateralTriangle::~EquilateralTriangle() {}
+OGAL::EquilateralTriangle::~EquilateralTriangle() = default;
 
 std::vector<OGAL::buffer_texture_pair> OGAL::EquilateralTriangle::return_buffer_texture_pairs()
 {
@@ -54,15 +52,15 @@ void OGAL::EquilateralTriangle::set_dimensions(short unsigned int type, GLfloat 
 {
     a_ = a;
     type_ = type;
-
+    
     recalculate();
 }
 
 void OGAL::EquilateralTriangle::recalculate()
 {
     std::vector<GLfloat> v;
-
-
+    
+    
     if (type_ == 0) {
         v = {position_.x, position_.y + a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, uv_.x, uv_.y,
              position_.x - (2.0f * a_ / sqrt(3.0f) / 2.0f), position_.y - a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b,
@@ -79,11 +77,11 @@ void OGAL::EquilateralTriangle::recalculate()
              color_.a, uv_.x, uv_.y
         };
     }
-
+    
     generated_vertex_buffer_ = v;
-
+    
     vertex_buffer_.bind();
-
-    vertex_buffer_.size_ = v.size();
+    
+    vertex_buffer_.size_ = (GLuint) v.size();
     vertex_buffer_.set_data(v);
 }

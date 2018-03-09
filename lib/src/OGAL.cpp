@@ -1,8 +1,9 @@
 #include "OGAL/OGAL.hpp"
+#include "iostream"
 
 std::vector<OGAL::event> events;
 
-void OGAL::key_callback(GLFWwindow *window, int key, int scancode, int action, int mods)
+void OGAL::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
     OGAL::event new_event{};
     new_event.key_event_.window = window;
@@ -15,7 +16,7 @@ void OGAL::key_callback(GLFWwindow *window, int key, int scancode, int action, i
     events.push_back(new_event);
 }
 
-void OGAL::window_size_callback(GLFWwindow *window, int width, int height)
+void OGAL::window_size_callback(GLFWwindow* window, int width, int height)
 {
     OGAL::event new_event{};
     new_event.window_event_.window = window;
@@ -38,7 +39,7 @@ OGAL::event OGAL::poll_events()
 }
 
 void
-OGAL::draw(GLFWwindow *window, OGAL::Renderable *renderable, GLuint program_id, glm::mat4 projection, glm::vec2 camera)
+OGAL::draw(GLFWwindow* window, OGAL::Renderable* renderable, GLuint program_id, glm::mat4 projection, glm::vec2 camera)
 {
     std::vector<OGAL::buffer_texture_pair> buff = renderable->return_buffer_texture_pairs();
     
@@ -77,7 +78,7 @@ OGAL::draw(GLFWwindow *window, OGAL::Renderable *renderable, GLuint program_id, 
                 GL_FLOAT,           // type
                 GL_FALSE,           // normalized?
                 9 * sizeof(float),                  // stride
-                (void *) (3 * sizeof(float))            // array buffer offset
+                (void*) (3 * sizeof(float))            // array buffer offset
         );
         glVertexAttribPointer(
                 2,                  // attribute 1. No particular reason for 1, but must match the layout in the shader.
@@ -85,7 +86,7 @@ OGAL::draw(GLFWwindow *window, OGAL::Renderable *renderable, GLuint program_id, 
                 GL_FLOAT,           // type
                 GL_FALSE,           // normalized?
                 9 * sizeof(float),                  // stride
-                (void *) (7 * sizeof(float))            // array buffer offset
+                (void*) (7 * sizeof(float))            // array buffer offset
         );
         
         glDrawArrays(data.render_type, 0, data.buffer_size); // Starting from vertex 0; 3 vertices total -> 1 triangle
@@ -95,7 +96,98 @@ OGAL::draw(GLFWwindow *window, OGAL::Renderable *renderable, GLuint program_id, 
     glDisableVertexAttribArray(2);
 }
 
-int OGAL::init_ogal()
+GLFWwindow* OGAL::init_ogal(int width, int height, const char* title, OGAL::Shader* vertex_shader,
+                            OGAL::Program* program, OGAL::Shader* fragment_shader, OGAL::VAO* vao, bool setup_callbacks,
+                            bool setup_shaders)
 {
+    GLFWwindow* window;
+    if (!glfwInit()) {
+        fprintf(stderr, "An error was encountered when trying to initialise GLFW.");
+        return nullptr;
+    }
+    
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    
+    window = glfwCreateWindow(width, height, title, nullptr, nullptr);
+    
+    if (!window) {
+        std::cout << "An error was encountered when trying to open a window.\n";
+        return nullptr;
+    }
+    
+    glfwMakeContextCurrent(window);
+    
+    glfwSwapInterval(1);
+    
+    if (setup_callbacks) {
+        glfwSetFramebufferSizeCallback(window, OGAL::window_size_callback);
+        
+        glfwSetKeyCallback(window, OGAL::key_callback);
+    }
 
+#ifdef __GLEW_H__
+    glewExperimental = GL_TRUE;
+    
+    if (glewInit() != GLEW_OK) {
+        std::cout << "An error was encountered when trying to initialise GLEW.\n";
+        exit(EXIT_FAILURE);
+    }
+#else
+#warning "No library used to provide newest OpenGL!"
+#endif
+    
+    if (setup_shaders) {
+        
+        vertex_shader->load_shader("#version 330 core\n\
+                              layout(location = 0) in vec3 vertex_pos;\n\
+                              layout(location = 1) in vec4 color;\n\
+                              layout(location = 2) in vec2 uv;\n\
+                              \n\
+                              out vec4 colorV;\n\
+                              out vec2 UV;\n\
+                              \n\
+                              uniform mat4 projection;\n\
+                              uniform vec2 camera_pos;\n\
+                              \n\
+                              void main() {\n\
+                                    UV = uv;\n\
+                                    colorV = color;\n\
+                                  gl_Position = projection * vec4(vertex_pos.x + camera_pos.x, vertex_pos.y + camera_pos.y, vertex_pos.z, 1);\n\
+                              }\
+                              ",
+                                   GL_VERTEX_SHADER);
+        
+        fragment_shader->load_shader("#version 330 core\n\
+                                \n\
+                                uniform sampler2D uvtexture;\n\
+                                uniform sampler3D uvtexture3d;\n\
+                                uniform bool use_3d;\
+                                uniform bool use_texture;\n\
+                                \n\
+                                in vec4 colorV;\n\
+                                in vec2 UV;\n\
+                                \n\
+                                out vec4 colorF;\n\
+                                \n\
+                                void main() {\n\
+                                    if (use_texture == true) {\n\
+                                        colorF = texture(uvtexture, UV);\n\
+                                    } else {\n\
+                                        colorF = colorV;\n\
+                                    }\n\
+                                }\
+                                ",
+                                     GL_FRAGMENT_SHADER);
+        
+        program->load_program(vertex_shader->shader_id_, fragment_shader->shader_id_);
+        
+        glUseProgram(program->program_id_);
+    }
+    
+    vao->init();
+    vao->bind();
+    
+    return window;
 }

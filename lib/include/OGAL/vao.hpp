@@ -10,6 +10,9 @@ namespace OGAL {
         VAO();
         
         ~VAO();
+    
+        /// Initializes this class
+        void init();
         
         /// Binds this VAO as the the current one
         void bind();

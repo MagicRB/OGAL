@@ -4,22 +4,15 @@
 
 #include "OGAL/texture_3d.hpp"
 
-OGAL::Texture3D::Texture3D()
-{
+OGAL::Texture3D::Texture3D() = default;
 
-}
-
-OGAL::Texture3D::~Texture3D()
-{
-
-}
-
+OGAL::Texture3D::~Texture3D() = default;
 void OGAL::Texture3D::bind()
 {
     glBindTexture(GL_TEXTURE_3D, texture_id_);
 }
 
-void OGAL::Texture3D::set_data(unsigned char *data, int width, int height, int layer)
+void OGAL::Texture3D::set_data(unsigned char* data, int width, int height, int layer)
 {
     bind();
     

@@ -12,7 +12,7 @@ void OGAL::Texture::bind()
     glBindTexture(GL_TEXTURE_2D, texture_id_);
 }
 
-void OGAL::Texture::set_data(unsigned char *data, int width, int height)
+void OGAL::Texture::set_data(unsigned char* data, int width, int height)
 {
     bind();
     

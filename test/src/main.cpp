@@ -18,103 +18,24 @@
 
 #include <iostream>
 
-#define WINDOW_WIDTH 500.0f
-#define WINDOW_HEIGHT 600.0f
-
-void error_callback(int error, const char *description)
-{
-    printf("%s", description);
-}
+#define WIDTH 500.0f
+#define HEIGHT 600.0f
 
 int main()
 {
-    if (!glfwInit()) {
-        fprintf(stderr, "An error was encountered when trying to initialise GLFW.");
-        exit(EXIT_FAILURE);
-    }
-    
-    glfwSetErrorCallback(error_callback);
-    
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    
-    GLFWwindow *window =
-            glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "OGAL", NULL, NULL);
-    
-    if (!window) {
-        fprintf(stderr, "An error was encountered when trying to open a window.");
-        exit(EXIT_FAILURE);
-    }
-    
-    glfwMakeContextCurrent(window);
-    
-    glfwSwapInterval(1);
-    
-    glfwSetFramebufferSizeCallback(window, OGAL::window_size_callback);
-    
-    glfwSetKeyCallback(window, OGAL::key_callback);
-    
-    glewExperimental = GL_TRUE;
-    
-    if (glewInit() != GLEW_OK) {
-        fprintf(stderr, "An error was encountered when trying to initialise GLEW.");
-        exit(EXIT_FAILURE);
-    }
+    GLFWwindow* window;
     
     OGAL::Shader vertex_shader;
     OGAL::Shader fragment_shader;
+    OGAL::Program program;
     
-    vertex_shader.load_shader("#version 330 core\n\
-                              layout(location = 0) in vec3 vertex_pos;\n\
-                              layout(location = 1) in vec4 color;\n\
-                              layout(location = 2) in vec2 uv;\n\
-                              \n\
-                              out vec4 colorV;\n\
-                              out vec2 UV;\n\
-                              \n\
-                              uniform mat4 projection;\n\
-                              uniform vec2 camera_pos;\n\
-                              \n\
-                              void main() {\n\
-                                    UV = uv;\n\
-                                    colorV = color;\n\
-                                  gl_Position = projection * vec4(vertex_pos.x + camera_pos.x, vertex_pos.y + camera_pos.y, vertex_pos.z, 1);\n\
-                              }\
-                              ",
-                              GL_VERTEX_SHADER);
-    
-    fragment_shader.load_shader("#version 330 core\n\
-                                \n\
-                                uniform sampler2D uvtexture;\n\
-                                uniform sampler3D uvtexture3d;\n\
-                                uniform bool use_3d;\
-                                uniform bool use_texture;\n\
-                                \n\
-                                in vec4 colorV;\n\
-                                in vec2 UV;\n\
-                                \n\
-                                out vec4 colorF;\n\
-                                \n\
-                                void main() {\n\
-                                    if (use_texture == true) {\n\
-                                        colorF = texture(uvtexture, UV);\n\
-                                    } else {\n\
-                                        colorF = colorV;\n\
-                                    }\n\
-                                }\
-                                ",
-                                GL_FRAGMENT_SHADER);
-    
-    OGAL::Program main_program;
-    
-    main_program.load_program(vertex_shader.shader_id_, fragment_shader.shader_id_);
-    
-    glUseProgram(main_program.program_id_);
+    std::string title = "OGAL";
     
     OGAL::VAO vao;
     
-    vao.bind();
+    window = OGAL::init_ogal((int) WIDTH, (int) HEIGHT, title.c_str(), &vertex_shader, &program, &fragment_shader, &vao,
+                             true,
+                             true);
     
     printf("%s\n", glGetString(GL_VERSION));
     

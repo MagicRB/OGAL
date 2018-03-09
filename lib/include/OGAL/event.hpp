@@ -7,7 +7,7 @@ namespace OGAL {
     /// Struct which holds only key press related events
     struct key_event {
     public:
-        GLFWwindow *window;
+        GLFWwindow* window;
         int key;
         int scancode;
         int action;
@@ -17,7 +17,7 @@ namespace OGAL {
     /// Struct which holds only window related events
     struct window_event {
     public:
-        GLFWwindow *window;
+        GLFWwindow* window;
         int width;
         int height;
     };

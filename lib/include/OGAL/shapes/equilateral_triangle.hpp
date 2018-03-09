@@ -45,7 +45,7 @@ namespace OGAL {
     protected:
         
         short unsigned int type_;
-        short unsigned int a_;
+        GLfloat a_;
         
         void recalculate();
         
