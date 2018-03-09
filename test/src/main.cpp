@@ -16,10 +16,8 @@
 
 #define STB_IMAGE_IMPLEMENTATION
 
-#include <iostream>
-
-#define WIDTH 500.0f
-#define HEIGHT 600.0f
+#define WIDTH 250.0f
+#define HEIGHT 500.0f
 
 int main()
 {
@@ -39,11 +37,18 @@ int main()
     
     printf("%s\n", glGetString(GL_VERSION));
     
-    glm::mat4 projection = glm::ortho(-50.0f, 50.0f, -60.0f, 60.0f);
+    float scale = 11.0f;
     
-    glm::vec2 camera_pos = glm::vec2(0, 0);
+    glm::vec2 projection{scale, (HEIGHT - WIDTH) / (WIDTH / scale) + scale};
     
-    float scale = 50.0f;
+    glm::vec2 camera_pos{0, 0};
+    
+    OGAL::Square sq;
+    sq.load_texture_from_file("youtube.png");
+    sq.set_dimensions(0, 20);
+    sq.set_position(0, 0);
+    sq.set_color(255, 0, 0, 0);
+    sq.enable_texture(false);
     
     while (!glfwWindowShouldClose(window)) {
         OGAL::event event = OGAL::poll_events();
@@ -57,29 +62,35 @@ int main()
                 
                 int width, height;
                 glfwGetWindowSize(window, &width, &height);
-                
-                float aspect = scale * (float) height / (float) width;
-                
-                projection = glm::ortho(-scale, scale, -aspect, aspect);
-                
+    
+                projection = {scale, (height - width) / (width / scale) + scale};
             } else if (event.key_event_.key == GLFW_KEY_T && event.key_event_.action == GLFW_PRESS) {
                 scale -= 1;
                 
                 int width, height;
                 glfwGetWindowSize(window, &width, &height);
-                
-                float aspect = scale * (float) height / (float) width;
-                
-                projection = glm::ortho(-scale, scale, -aspect, aspect);
+    
+                projection = {scale, (height - width) / (width / scale) + scale};
             }
         } else if (event.type == 1) {
             glViewport(0, 0, event.window_event_.width, event.window_event_.height);
-            
-            float aspect = scale * (float) event.window_event_.height / (float) event.window_event_.width;
-            
-            std::cout << scale << "\n";
-            
-            projection = glm::ortho(-scale, scale, -aspect, aspect);
+    
+            projection = {scale, (event.window_event_.height - event.window_event_.width) /
+                                 (event.window_event_.width / scale) + scale};
+    
+        } else if (event.type == 2) {
+    
+            double cursor_x, cursor_y;
+    
+            glfwGetCursorPos(window, &cursor_x, &cursor_y);
+    
+            glm::vec2 world_position = OGAL::screen_to_world_space(window, scale, camera_pos,
+                                                                   glm::vec2 {cursor_x, cursor_y});
+    
+            if (event.mouse_button_event_.button == GLFW_MOUSE_BUTTON_LEFT &&
+                event.mouse_button_event_.action == GLFW_PRESS) {
+        
+            }
         }
         if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
             camera_pos.x += 1;
@@ -95,6 +106,8 @@ int main()
         }
         
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+        OGAL::draw(window, &sq, program.program_id_, projection, camera_pos);
         
         glfwSwapBuffers(window);
     }

@@ -49,6 +49,8 @@ namespace OGAL {
         /// The vertex buffer that was generated, when either the dimensions, position, or color was changed
         std::vector<GLfloat> generated_vertex_buffer_;
     
+        void load_texture_from_file(const char* file);
+    
     protected:
         
         short unsigned int type_;

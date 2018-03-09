@@ -22,6 +22,16 @@ namespace OGAL {
         int height;
     };
     
+    /// Struct which holds only mouse button press related events
+    struct mouse_button_event {
+    public:
+        GLFWwindow* window;
+        int button;
+        int action;
+        int mods;
+    };
+    
+    
     /// Struct which holds all the possible events provided by GLFW
     /// Types are:
     ///     0 - Key event
@@ -31,6 +41,7 @@ namespace OGAL {
         short unsigned int type;
         key_event key_event_;
         window_event window_event_;
+        mouse_button_event mouse_button_event_;
     };
 }
 #endif //EVENT_HPP

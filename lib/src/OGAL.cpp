@@ -1,5 +1,4 @@
 #include "OGAL/OGAL.hpp"
-#include "iostream"
 
 std::vector<OGAL::event> events;
 
@@ -27,6 +26,23 @@ void OGAL::window_size_callback(GLFWwindow* window, int width, int height)
     events.push_back(new_event);
 }
 
+void OGAL::error_callback(int error, const char* description)
+{
+    std::cout << "An GLFW error was encountered: [" << description << "]\n";
+}
+
+void OGAL::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+{
+    OGAL::event new_event{};
+    new_event.mouse_button_event_.window = window;
+    new_event.mouse_button_event_.button = button;
+    new_event.mouse_button_event_.action = action;
+    new_event.mouse_button_event_.mods = mods;
+    new_event.type = 2;
+    
+    events.push_back(new_event);
+}
+
 OGAL::event OGAL::poll_events()
 {
     glfwPollEvents();
@@ -39,7 +55,7 @@ OGAL::event OGAL::poll_events()
 }
 
 void
-OGAL::draw(GLFWwindow* window, OGAL::Renderable* renderable, GLuint program_id, glm::mat4 projection, glm::vec2 camera)
+OGAL::draw(GLFWwindow* window, OGAL::Renderable* renderable, GLuint program_id, glm::vec2 projection, glm::vec2 camera)
 {
     std::vector<OGAL::buffer_texture_pair> buff = renderable->return_buffer_texture_pairs();
     
@@ -49,7 +65,7 @@ OGAL::draw(GLFWwindow* window, OGAL::Renderable* renderable, GLuint program_id, 
     GLint cameraID = glGetUniformLocation(program_id, "camera_pos");
     
     glUniform2f(cameraID, camera.x, camera.y);
-    glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &projection[0][0]);
+    glUniform2f(MatrixID, projection.x, projection.y);
     
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
@@ -123,8 +139,9 @@ GLFWwindow* OGAL::init_ogal(int width, int height, const char* title, OGAL::Shad
     
     if (setup_callbacks) {
         glfwSetFramebufferSizeCallback(window, OGAL::window_size_callback);
-        
         glfwSetKeyCallback(window, OGAL::key_callback);
+        glfwSetErrorCallback(OGAL::error_callback);
+        glfwSetMouseButtonCallback(window, OGAL::mouse_button_callback);
     }
 
 #ifdef __GLEW_H__
@@ -148,13 +165,13 @@ GLFWwindow* OGAL::init_ogal(int width, int height, const char* title, OGAL::Shad
                               out vec4 colorV;\n\
                               out vec2 UV;\n\
                               \n\
-                              uniform mat4 projection;\n\
+                              uniform vec2 projection;\n\
                               uniform vec2 camera_pos;\n\
                               \n\
                               void main() {\n\
                                     UV = uv;\n\
                                     colorV = color;\n\
-                                  gl_Position = projection * vec4(vertex_pos.x + camera_pos.x, vertex_pos.y + camera_pos.y, vertex_pos.z, 1);\n\
+                                  gl_Position.xy = vec2(vertex_pos.x + camera_pos.x, vertex_pos.y + camera_pos.y) / projection;\n\
                               }\
                               ",
                                    GL_VERTEX_SHADER);
@@ -162,8 +179,6 @@ GLFWwindow* OGAL::init_ogal(int width, int height, const char* title, OGAL::Shad
         fragment_shader->load_shader("#version 330 core\n\
                                 \n\
                                 uniform sampler2D uvtexture;\n\
-                                uniform sampler3D uvtexture3d;\n\
-                                uniform bool use_3d;\
                                 uniform bool use_texture;\n\
                                 \n\
                                 in vec4 colorV;\n\
@@ -190,4 +205,22 @@ GLFWwindow* OGAL::init_ogal(int width, int height, const char* title, OGAL::Shad
     vao->bind();
     
     return window;
+}
+
+glm::vec2
+OGAL::screen_to_world_space(GLFWwindow* window, float scale, glm::vec2 camera_position, glm::vec2 screen_position)
+{
+    
+    int window_width, window_height;
+    glfwGetWindowSize(window, &window_width, &window_height);
+    
+    float scale_y = (window_height - window_width) / (window_width / scale) + scale;
+    
+    float ratio_x = scale / (window_width / 2);
+    float ratio_y = scale_y / (window_height / 2);
+    
+    float pos_x = ratio_x * (screen_position.x - (window_width / 2)) - camera_position.x;
+    float pos_y = ratio_y * (screen_position.y - (window_height / 2)) + camera_position.y;
+    
+    return glm::vec2 {pos_x, pos_y};
 }

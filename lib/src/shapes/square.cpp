@@ -1,5 +1,9 @@
 #include "OGAL/shapes/square.hpp"
 
+#define STB_IMAGE_IMPLEMENTATION
+
+#include "OGAL/stb_image.h"
+
 OGAL::Square::Square()
 {
     position_.x = 0;
@@ -81,4 +85,12 @@ void OGAL::Square::recalculate()
     
     vertex_buffer_.size_ = v.size();
     vertex_buffer_.set_data(v);
+}
+
+void OGAL::Square::load_texture_from_file(const char* file)
+{
+    int width, height, bpp;
+    unsigned char* rgb = stbi_load(file, &width, &height, &bpp, 4);
+    
+    texture_.set_data(rgb, width, height);
 }
