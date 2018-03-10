@@ -44,11 +44,11 @@ int main()
     glm::vec2 camera_pos{0, 0};
     
     OGAL::Square sq;
-    sq.load_texture_from_file("youtube.png");
+    sq.load_texture3d_from_file("youtube.png", 2);
     sq.set_dimensions(0, 20);
     sq.set_position(0, 0);
     sq.set_color(255, 0, 0, 0);
-    sq.enable_texture(false);
+    sq.enable_texture3d(true);
     
     while (!glfwWindowShouldClose(window)) {
         OGAL::event event = OGAL::poll_events();

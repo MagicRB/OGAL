@@ -18,7 +18,7 @@ namespace OGAL {
         void bind();
         
         /// Sets data of this Texture2D, data should be in the RGBA format
-        void set_data(unsigned char* data, int width, int height, int layer);
+        void add_data(unsigned char* data, int width, int height, int layers, int layer)
         
         GLuint texture_id_;
     protected:

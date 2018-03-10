@@ -51,7 +51,7 @@ namespace OGAL {
         
         glm::vec<2, float, (glm::qualifier) 0> position_;
         glm::vec<4, float, (glm::qualifier) 0> color_;
-        glm::vec<2, float, (glm::qualifier) 0> uv_;
+        glm::vec<3, float, (glm::qualifier) 0> uv_;
         
         OGAL::VBO vertex_buffer_;
     

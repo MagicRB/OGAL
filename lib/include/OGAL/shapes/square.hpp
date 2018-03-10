@@ -4,6 +4,7 @@
 #include "../renderable.hpp"
 #include "../vbo.hpp"
 #include "../texture.hpp"
+#include "../texture_3d.hpp"
 
 #include <glm/glm.hpp>
 
@@ -41,15 +42,20 @@ namespace OGAL {
         
         /// Enables or disables texture, disabled means that plain color will be used, enabled means enabled...
         void enable_texture(bool use_texture);
+    
+        void enable_texture3d(bool use_texture3d);
         
         
         /// Texture of this square. This variable needs to be public because you have to set the texture using: texture_.set_data(unsigned char* data, GLuint width, GLuint height)
         OGAL::Texture texture_;
+        OGAL::Texture3D texture3D_;
         
         /// The vertex buffer that was generated, when either the dimensions, position, or color was changed
         std::vector<GLfloat> generated_vertex_buffer_;
     
         void load_texture_from_file(const char* file);
+    
+        void load_texture3d_from_file(const char* file, GLfloat layer);
     
     protected:
         
@@ -57,6 +63,7 @@ namespace OGAL {
         short unsigned int a_;
         
         GLuint use_texture_ = 0;
+        GLuint use_texture3d_ = 0;
         
         void recalculate();
         
