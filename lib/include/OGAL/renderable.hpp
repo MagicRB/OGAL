@@ -14,9 +14,7 @@ namespace OGAL {
         GLuint buffer_id;
         GLuint buffer_size;
         GLuint texture_id;
-        GLuint texture3d_id;
         GLuint use_texture;
-        GLuint use_3Dtexture;
     };
     
     class Renderable {

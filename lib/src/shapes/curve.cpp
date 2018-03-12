@@ -3,8 +3,8 @@
 std::vector<OGAL::buffer_texture_pair> OGAL::Curve::return_buffer_texture_pairs()
 {
     return std::vector<OGAL::buffer_texture_pair>(1,
-                                                  {GL_LINE_STRIP, vertex_buffer_.vbo_id_, vertex_buffer_.size_ / 10, 0,
-                                                   0, 0, 0});
+                                                  {GL_LINE_STRIP, vertex_buffer_.vbo_id_, vertex_buffer_.size_ / 9, 0,
+                                                   0});
 }
 
 void OGAL::Curve::set_positions(std::vector<glm::vec<2, float, (glm::qualifier) 0>> positions)
