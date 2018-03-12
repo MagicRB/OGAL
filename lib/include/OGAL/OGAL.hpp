@@ -2,7 +2,6 @@
 #include "renderable.hpp"
 #include "shader.hpp"
 #include "texture.hpp"
-#include "texture_3d.hpp"
 #include "vao.hpp"
 #include "vbo.hpp"
 #include "event.hpp"

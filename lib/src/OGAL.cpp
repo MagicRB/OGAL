@@ -61,10 +61,8 @@ OGAL::draw(GLFWwindow* window, OGAL::Renderable* renderable, GLuint program_id, 
     
     GLint MatrixID = glGetUniformLocation(program_id, "projection");
     GLint use_textureID = glGetUniformLocation(program_id, "use_texture");
-    GLint use_textureID3D = glGetUniformLocation(program_id, "use_3Dtexture");
     GLint textureID = glGetUniformLocation(program_id, "uvtexture");
     GLint cameraID = glGetUniformLocation(program_id, "camera_pos");
-    GLint textureID3D = glGetUniformLocation(program_id, "texture3d");
     
     glUniform2f(cameraID, camera.x, camera.y);
     glUniform2f(MatrixID, projection.x, projection.y);
@@ -75,25 +73,19 @@ OGAL::draw(GLFWwindow* window, OGAL::Renderable* renderable, GLuint program_id, 
     
     for (OGAL::buffer_texture_pair data : buff) {
         glUniform1ui(use_textureID, data.use_texture);
-        glUniform1ui(use_textureID3D, data.use_3Dtexture);
         
         glBindBuffer(GL_ARRAY_BUFFER, data.buffer_id);
         glActiveTexture(GL_TEXTURE0);
     
-        if (data.use_3Dtexture) {
-            glUniform1i(textureID3D, data.texture3d_id);
-            glBindTexture(GL_TEXTURE_3D, data.texture3d_id);
-        } else {
-            glUniform1i(textureID, data.texture_id);
-            glBindTexture(GL_TEXTURE_2D, data.texture_id);
-        }
+        glUniform1i(textureID, 0);
+        glBindTexture(GL_TEXTURE_2D, data.texture_id);
         
         glVertexAttribPointer(
                 0,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
                 3,                  // size
                 GL_FLOAT,           // type
                 GL_FALSE,           // normalized?
-                10 * sizeof(float),                  // stride
+                9 * sizeof(float),                  // stride
                 nullptr             // array buffer offset
         );
         glVertexAttribPointer(
@@ -101,15 +93,15 @@ OGAL::draw(GLFWwindow* window, OGAL::Renderable* renderable, GLuint program_id, 
                 4,                  // size
                 GL_FLOAT,           // type
                 GL_FALSE,           // normalized?
-                10 * sizeof(float),                  // stride
+                9 * sizeof(float),                  // stride
                 (void*) (3 * sizeof(float))            // array buffer offset
         );
         glVertexAttribPointer(
                 2,                  // attribute 1. No particular reason for 1, but must match the layout in the shader.
-                3,                  // size
+                2,                  // size
                 GL_FLOAT,           // type
                 GL_FALSE,           // normalized?
-                10 * sizeof(float),                  // stride
+                9 * sizeof(float),                  // stride
                 (void*) (7 * sizeof(float))            // array buffer offset
         );
         
@@ -168,10 +160,10 @@ GLFWwindow* OGAL::init_ogal(int width, int height, const char* title, OGAL::Shad
         vertex_shader->load_shader("#version 330 core\n\
                               layout(location = 0) in vec3 vertex_pos;\n\
                               layout(location = 1) in vec4 color;\n\
-                              layout(location = 2) in vec3 uv;\n\
+                              layout(location = 2) in vec2 uv;\n\
                               \n\
                               out vec4 colorV;\n\
-                              out vec3 UV;\n\
+                              out vec2 UV;\n\
                               \n\
                               uniform vec2 projection;\n\
                               uniform vec2 camera_pos;\n\
@@ -179,7 +171,7 @@ GLFWwindow* OGAL::init_ogal(int width, int height, const char* title, OGAL::Shad
                               void main() {\n\
                                     UV = uv;\n\
                                     colorV = color;\n\
-                                  gl_Position.xy = vec2(vertex_pos.x + camera_pos.x, vertex_pos.y + camera_pos.y) / projection;\n\
+                                    gl_Position.xy = vec2(vertex_pos.x + camera_pos.x, vertex_pos.y + camera_pos.y) / projection;\n\
                               }\
                               ",
                                    GL_VERTEX_SHADER);
@@ -192,15 +184,13 @@ GLFWwindow* OGAL::init_ogal(int width, int height, const char* title, OGAL::Shad
                                 uniform sampler3D texture3;\n\
                                 \n\
                                 in vec4 colorV;\n\
-                                in vec3 UV;\n\
+                                in vec2 UV;\n\
                                 \n\
                                 out vec4 colorF;\n\
                                 \n\
                                 void main() {\n\
-                                    if (use_texture == true && use_3Dtexture == true) {\n\
-                                        colorF = texture(uvtexture, UV.xy);\n\
-                                    } else if (use_texture == true && use_3Dtexture == false) {\n\
-                                        colorF = texture(texture3, UV);\n\
+                                    if (use_texture == true) {\n\
+                                        colorF = texture(uvtexture, UV);\n\
                                     } else {\n\
                                         colorF = colorV;\n\
                                     }\n\

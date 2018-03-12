@@ -4,6 +4,8 @@
 
 #include "OGAL/stb_image.h"
 
+#include <iostream>
+
 OGAL::Square::Square()
 {
     position_.x = 0;
@@ -48,9 +50,8 @@ glm::vec<4, float, (glm::qualifier) 0> OGAL::Square::get_color()
 
 std::vector<OGAL::buffer_texture_pair> OGAL::Square::return_buffer_texture_pairs()
 {
-    return std::vector<OGAL::buffer_texture_pair>(1, {GL_TRIANGLES, vertex_buffer_.vbo_id_, vertex_buffer_.size_ / 10,
-                                                      texture_.texture_id_, texture3D_.texture_id_, use_texture_,
-                                                      texture3D_.texture_id_});
+    return std::vector<OGAL::buffer_texture_pair>(1, {GL_TRIANGLES, vertex_buffer_.vbo_id_, vertex_buffer_.size_ / 9,
+                                                      texture_.texture_id_, use_texture_});
 }
 
 void OGAL::Square::set_dimensions(short unsigned int type, GLfloat a)
@@ -72,17 +73,11 @@ void OGAL::Square::recalculate()
     
     if (type_ == 0) {
         v = {position_.x - a_ / 2.0f, position_.y + a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, 0.0f, 1.0f,
-             0.0f,
              position_.x + a_ / 2.0f, position_.y + a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, 1.0f, 1.0f,
-             0.0f,
              position_.x - a_ / 2.0f, position_.y - a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, 0.0f, 0.0f,
-             0.0f,
              position_.x + a_ / 2.0f, position_.y + a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, 1.0f, 1.0f,
-             0.0f,
              position_.x + a_ / 2.0f, position_.y - a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, 1.0f, 0.0f,
-             0.0f,
-             position_.x - a_ / 2.0f, position_.y - a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, 0.0f, 0.0f,
-             0.0f
+             position_.x - a_ / 2.0f, position_.y - a_ / 2.0f, 0.0f, color_.r, color_.g, color_.b, color_.a, 0.0f, 0.0f
         };
     }
     
@@ -100,18 +95,4 @@ void OGAL::Square::load_texture_from_file(const char* file)
     unsigned char* rgb = stbi_load(file, &width, &height, &bpp, 4);
     
     texture_.set_data(rgb, width, height);
-}
-
-void OGAL::Square::load_texture3d_from_file(const char* file, GLfloat layer)
-{
-    int width, height, bpp;
-    unsigned char* rgb = stbi_load(file, &width, &height, &bpp, 4);
-    
-    texture3D_.add_data(rgb, width, height, 1, layer);
-}
-
-void OGAL::Square::enable_texture3d(bool use_texture3d)
-{
-    use_texture_ = use_texture3d;
-    use_texture3d_ = 1;
 }

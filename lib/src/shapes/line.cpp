@@ -3,8 +3,7 @@
 std::vector<OGAL::buffer_texture_pair> OGAL::Line::return_buffer_texture_pairs()
 {
     return std::vector<OGAL::buffer_texture_pair>(1,
-                                                  {GL_LINES, vertex_buffer_.vbo_id_, vertex_buffer_.size_ / 10, 0, 0, 0,
-                                                   0});
+                                                  {GL_LINES, vertex_buffer_.vbo_id_, vertex_buffer_.size_ / 9, 0, 0});
 }
 
 void OGAL::Line::set_positions(GLfloat x, GLfloat y, GLfloat x2, GLfloat y2)
